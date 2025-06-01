@@ -7,6 +7,13 @@ import hardware from "./images/vehicle.png";
 import spare from "./images/repair.png";
 import Image from "next/image";
 import dress from "./images/productshirt.jpg";
+import glass from "./images/productglass.jpg";
+import watch from "./images/productwatch.jpg";
+import lipstick from "./images/productlipstick.jpg";
+import productbanner1 from "./images/productbanner1.jpg";
+import productbanner2 from "./images/productbanner2.jpg";
+
+
 
 export const categories = [
   { name: "Fashion", image: fashion.src },
@@ -27,12 +34,13 @@ export const products = [
     originalPrice: 1499,
     discount: 20,
     rating: 4.5,
+     type: "product",
     image: (
       <Image
         src={dress}
         alt="dress"
-        
-        className="object-cover"
+           fill={true}
+        className="object-cover rounded-[22px]"
       />
     ),
   },
@@ -44,12 +52,13 @@ export const products = [
     originalPrice: 1499,
     discount: 20,
     rating: 4.5,
+     type: "product",
     image: (
       <Image
-        src={dress}
-        alt="dress"
-        
-        className="object-cover"
+        src={glass}
+        alt="glass"
+           fill={true}
+        className="object-cover rounded-[22px]"
       />
     ),
   },
@@ -61,12 +70,13 @@ export const products = [
     originalPrice: 1499,
     discount: 20,
     rating: 4.5,
+     type: "product",
     image: (
       <Image
-        src={dress}
-        alt="dress"
-        
-        className="object-cover"
+        src={watch}
+        alt="watch"
+           fill={true}
+        className="object-cover rounded-[22px]"
       />
     ),
   },
@@ -78,12 +88,13 @@ export const products = [
     originalPrice: 1499,
     discount: 20,
     rating: 4.8,
+     type: "product",
     image: (
       <Image
-        src={dress}
-        alt="dress"
-        
-        className="object-cover"
+        src={lipstick}
+        alt="lipstick"
+           fill={true}
+        className="object-cover rounded-[22px]"
       />
     ),
   },
@@ -95,12 +106,203 @@ export const products = [
     originalPrice: 149,
     discount: 20,
     rating: 4.5,
+     type: "product",
     image: (
       <Image
         src={dress}
         alt="dress"
-        
-        className="object-cover"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+   {
+    id: 6,
+    name: "Adidas Outlet",
+    discount: 50,
+    image: (
+       <Image
+        src={productbanner2}
+        alt="productbanner2"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+    type: "banner",
+  },
+   {
+    id: 7,
+    name: "Fossil",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={dress}
+        alt="dress"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 8,
+    name: "Rayban",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={glass}
+        alt="glass"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 9,
+    name: "Allensolly",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={watch}
+        alt="watch"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 10,
+    name: "Bosch",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.8,
+     type: "product",
+    image: (
+      <Image
+        src={lipstick}
+        alt="lipstick"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 11,
+    name: "Nike Sale",
+    discount: 40,
+    image: (
+       <Image
+        src={productbanner1}
+        alt="productbanner1"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+    type: "banner",
+  },
+   {
+    id: 12,
+    name: "Fossil",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={dress}
+        alt="dress"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 13,
+    name: "Rayban",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={glass}
+        alt="glass"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 14,
+    name: "Allensolly",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={watch}
+        alt="watch"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+  {
+    id: 15,
+    name: "Bosch",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.8,
+     type: "product",
+    image: (
+      <Image
+        src={lipstick}
+        alt="lipstick"
+           fill={true}
+        className="object-cover rounded-[22px]"
+      />
+    ),
+  },
+    {
+    id: 16,
+    name: "Rayban",
+    description: "Lorem ipsum dolor sit amet, consectetur",
+    price: 1199,
+    originalPrice: 1499,
+    discount: 20,
+    rating: 4.5,
+     type: "product",
+    image: (
+      <Image
+        src={glass}
+        alt="glass"
+           fill={true}
+        className="object-cover rounded-[22px]"
       />
     ),
   },

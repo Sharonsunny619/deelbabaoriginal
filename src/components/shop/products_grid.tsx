@@ -7,15 +7,16 @@ import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { ShoppingCart } from "lucide-react";
 import { products } from "./data";
 
-// ProductCard component (reused from the first code)
-const ProductCard = ({ product }) => {
+
+ const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { name, image, price, originalPrice, discount, rating } = product;
+console.log("image",image);
 
   return (
     <div className="flex flex-col items-center justify-center bg-white rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
-      <div className="relative inline-block w-full">
-        {image} 
+      <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
+         {image}
         <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
           <div className="bg-white flex items-center rounded px-2 py-[2px] shadow">
             <span className="font-bold m-0">{rating}</span>
@@ -43,15 +44,15 @@ const ProductCard = ({ product }) => {
         <div className="flex gap-0.5 mt-1 text-sm text-left">
           <b className="text-black font-semibold">₹{price}</b>
           <s className="text-[#616161]">₹{originalPrice}</s>
-          <span className="text-red-600">{discount}</span>
+          <span className="text-red-600">{discount}% OFF</span>
         </div>
       </div>
 
-      <div className="flex gap-2 items-center px-2 pb-2">
-        <button className="bg-[#689567] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
+      <div className="flex gap-2 items-center px-2 pb-2 mt-1">
+        <button className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
           Buy Now
         </button>
-        <Button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[37px] h-[37px] p-1.5 flex items-center justify-center">
+        <Button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center">
           <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
         </Button>
       </div>
@@ -59,40 +60,45 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// const BannerCard = () => {
-//   return (
-//     <div className="bg-white rounded-[22px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] flex items-center justify-between p-4 col-span-3">
-//       <div className="flex flex-col gap-2">
-//         <span className="text-2xl font-semibold text-black">Adidas Outlet</span>
-//         <span className="text-3xl font-bold text-yellow-500">50% Off</span>
-//         <button className="bg-[#689567] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-6 py-2 hover:opacity-70 w-fit">
-//           Buy Now
-//         </button>
-//       </div>
-//       <img
-//         src="/adidas-banner-image.jpg" // Replace with actual image path
-//         alt="Adidas Outlet"
-//         className="w-[150px] h-[100px] object-cover rounded-md"
-//       />
-//     </div>
-//   );
-// };
+const BannerCard = ({ item }) => {
+  return (
+    <div
+      className="bg-white rounded-[22px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] flex items-center justify-between p-4 col-span-3 h-full relative"
+     
+    >
+      {item.image}
+      {/* Semi-transparent overlay for text readability */}
+      <div className="absolute inset-0 bg-black/30 rounded-[22px]"></div>
+      
+      <div className="flex flex-col gap-2 z-10">
+        <span className="text-2xl font-semibold text-white">{item.name}</span>
+        <span className="text-3xl font-bold text-yellow-300">{item.discount}% Off</span>
+        <button className="bg-[#689567] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-6 py-1 hover:opacity-70 w-fit">
+          Buy Now
+        </button>
+      </div>
+    </div>
+  );
+};
+
+
 
 export default function ProductsGrid() {
   return (
-    <section className="py-10 px-10">
-      <h2 className="text-3xl font-semibold mb-6 flex items-center gap-4 text-black">
-        <span className="flex-1 h-px bg-gray-300"></span>
-        Products <span className="text-[#689567]">Grid</span>
-      </h2>
-
-      <div className="grid grid-cols-3 gap-6">
-        {products.slice(0, 8).map((product, index) => (
-          <div key={index} className="flex justify-center">
-            <ProductCard product={product} />
+    <section className="py-10 px-48">
+      <div className="grid grid-cols-5 gap-6">
+        {products.map((item, index) => (
+          <div
+            key={index}
+            className={item.type === "banner" ? "col-span-3" : "flex justify-center"}
+          >
+            {item.type === "product" ? (
+              <ProductCard product={item} />
+            ) : (
+              <BannerCard item={item} />
+            )}
           </div>
         ))}
-        {/* <BannerCard /> */}
       </div>
     </section>
   );
