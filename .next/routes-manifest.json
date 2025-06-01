@@ -52,6 +52,12 @@
       "namedRegex": "^/home(?:/)?$"
     },
     {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
       "page": "/services",
       "regex": "^/services(?:/)?$",
       "routeKeys": {},
@@ -62,6 +68,12 @@
       "regex": "^/shop(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/shop(?:/)?$"
+    },
+    {
+      "page": "/signup",
+      "regex": "^/signup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/signup(?:/)?$"
     }
   ],
   "dataRoutes": [],

@@ -5,11 +5,11 @@ import Deelbaba from "../header/images/deelbaba";
 import { footerSections, socialLinks } from "./data";
 
 
-export default function Footer() {
+export default function Footer({type}:{type?:string}) {
  
 
   return (
-    <footer className="bg-[#596F5B] text-white w-full">
+    <footer className={`bg-[#596F5B] text-white w-full ${type==="custom"?"relative -mb-20":""}`}>
       <div className="container mx-auto px-4 py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-2">
           {/* Brand Section */}

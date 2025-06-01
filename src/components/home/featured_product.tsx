@@ -7,7 +7,7 @@ import { products } from "./data";
 import { ArrowLeft, ArrowRight, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 
-const FeaturedProducts = () => {
+export default function FeaturedProducts  () {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
@@ -101,4 +101,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default FeaturedProducts;
+

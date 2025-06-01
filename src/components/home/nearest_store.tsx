@@ -6,7 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useRef } from "react";
 import { stores } from "./data";
 
-const NearestStores = () => {
+export default function NearestStores () {
   const autoplay = useRef(
     Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true })
   );
@@ -73,4 +73,4 @@ const NearestStores = () => {
   );
 };
 
-export default NearestStores;
+

@@ -1,10 +1,12 @@
 {
   "/favicon.ico/route": "/favicon.ico",
   "/_not-found/page": "/_not-found",
-  "/about-us/page": "/about-us",
-  "/contact/page": "/contact",
   "/home/page": "/home",
-  "/page": "/",
+  "/shop/page": "/shop",
+  "/about-us/page": "/about-us",
+  "/signup/page": "/signup",
+  "/contact/page": "/contact",
   "/services/page": "/services",
-  "/shop/page": "/shop"
+  "/login/page": "/login",
+  "/page": "/"
 }

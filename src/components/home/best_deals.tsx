@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { deals } from "./data";
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-const BestDeals = () => {
+export default function BestDeals()  {
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [autoplay.current]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -76,4 +76,4 @@ const BestDeals = () => {
   );
 };
 
-export default BestDeals;
+

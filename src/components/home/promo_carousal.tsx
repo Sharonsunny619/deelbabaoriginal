@@ -2,12 +2,11 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { banners } from "./data";
 
-const PromoCarousel = ({type}:{type?:string}) => {
+export default function PromoCarousel ({type}:{type?:string}) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -67,4 +66,4 @@ const PromoCarousel = ({type}:{type?:string}) => {
   );
 };
 
-export default PromoCarousel;
+

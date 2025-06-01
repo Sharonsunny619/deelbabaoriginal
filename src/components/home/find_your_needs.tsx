@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { professionals } from "./data";
 
-const FindYourNeeds = () => {
+export default function FindYourNeeds (){
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -81,4 +81,4 @@ const FindYourNeeds = () => {
   );
 };
 
-export default FindYourNeeds;
+

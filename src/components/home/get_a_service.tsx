@@ -4,7 +4,7 @@ import { serviceProviders } from "./data";
 
 
 
-const GetServiceSection = () => {
+export default function GetServiceSection () {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
 
@@ -136,4 +136,4 @@ const GetServiceSection = () => {
   );
 };
 
-export default GetServiceSection;
+
