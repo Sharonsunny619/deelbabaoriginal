@@ -16,14 +16,15 @@ import productbanner2 from "./images/productbanner2.jpg";
 
 
 export const categories = [
-  { name: "Fashion", image: fashion.src },
-  { name: "Mobiles", image: mobile.src },
-  { name: "Electronics", image: electronics.src },
-  { name: "Appliances", image: appliances.src },
-  { name: "Beauty & Health", image: beauty.src },
-  { name: "Hardwares", image: hardware.src },
-  { name: "Spare Parts", image: spare.src },
+  { id: 1, name: "Fashion", image: fashion.src },
+  { id: 2, name: "Mobiles", image: mobile.src },
+  { id: 3, name: "Electronics", image: electronics.src },
+  { id: 4, name: "Appliances", image: appliances.src },
+  { id: 5, name: "Beauty & Health", image: beauty.src },
+  { id: 6, name: "Hardwares", image: hardware.src },
+  { id: 7, name: "Spare Parts", image: spare.src },
 ];
+
 
 export const products = [
   {

@@ -11,8 +11,7 @@ import { products } from "./data";
  const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { name, image, price, originalPrice, discount, rating } = product;
-console.log("image",image);
-
+ 
   return (
     <div className="flex flex-col items-center justify-center bg-white rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
       <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
