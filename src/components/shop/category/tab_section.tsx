@@ -4,47 +4,18 @@ import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Category, CategoryType } from "./interface";
 import Image from "next/image";
-import CarTab from "./images/cartab.png";
-import BikeTab from "./images/biketab.png";
-import Wheeltab from "./images/wheeltab.png";
-import EngineTab from "./images/enginetab.png";
-import CarWashTab from "./images/carwashtab.png";
+
 import ProductsGrid from "./product_grid";
+import { tabcategories } from "./data";
 
-const categories: Category[] = [
-  {
-    id: 1,
-    name: "Car Spare Parts",
-    image: CarTab,
-  },
-  {
-    id: 2,
-    name: "Bike Spare Parts",
-    image: BikeTab,
-  },
-  {
-    id: 3,
-    name: "Accessories",
-    image: Wheeltab,
-  },
-  {
-    id: 4,
-    name: "Lubrications",
-    image: EngineTab,
-  },
-  {
-    id: 5,
-    name: "Vehicle Wash",
-    image: CarWashTab,
-  },
-];
 
-export default function TabSection() {
+
+export default function TabSection({ category }: { category: CategoryType }) {
   return (
     <div className=" py-6 px-2">
-      <Tabs defaultValue={categories[0].id.toString()} className="w-full flex items-center justify-center">
+      <Tabs defaultValue={tabcategories[0].id.toString()} className="w-full flex items-center justify-center">
         <TabsList className="gap-16 bg-transparent rounded-full shadow-none overflow-hidden text-black p-0 h-auto">
-          {categories.map((cat: Category) => (
+          {tabcategories.map((cat: Category) => (
           <div key={cat.id} className="bg-transparent px-16 flex flex-col items-center justify-center">
               <TabsTrigger
                 
@@ -67,11 +38,11 @@ export default function TabSection() {
           ))}
         </TabsList>
 
-        {categories.map((cat: Category) => (
+        {tabcategories.map((cat: Category) => (
           <TabsContent key={cat.id} value={cat.id.toString()}>
             <div className="p-4 text-center">
               {/* Content for {cat.name} category (ID: {cat.id}). */}
-              <ProductsGrid/>
+              <ProductsGrid tabcategory={cat} shopcategory={category}/>
             </div>
           </TabsContent>
         ))}

@@ -3,7 +3,14 @@ import Bosch from "./images/boschimage.png"
 import Wheel from "./images/wheelimage.png"
 import Motul from "./images/motulimage.png"
 import OilPump from "./images/oilpumpimage.png"
-import Flat50 from "./images/flat50%.jpg"
+import Flat50 from "./images/flatoffer.webp"
+import { Category } from "./interface";
+import CarTab from "./images/cartab.png";
+import BikeTab from "./images/biketab.png";
+import Wheeltab from "./images/wheeltab.png";
+import EngineTab from "./images/enginetab.png";
+import CarWashTab from "./images/carwashtab.png";
+
 
 export const products = [
   {
@@ -196,8 +203,9 @@ export const products = [
         src={Flat50}
         alt="Flat50"
            fill={true}
-        className="object-contain rounded-[22px]"
+        className="object-contain"
       />
+    
     ),
     type: "banner",
   },
@@ -210,7 +218,7 @@ export const products = [
         src={Flat50}
         alt="Flat50"
            fill={true}
-        className="object-contain rounded-[22px]"
+        className="object-contain"
       />
     ),
     type: "banner",
@@ -224,7 +232,7 @@ export const products = [
         src={Flat50}
         alt="Flat50"
            fill={true}
-        className="object-contain rounded-[22px]"
+        className="object-contain rounded-none"
       />
     ),
     type: "banner",
@@ -336,5 +344,33 @@ export const products = [
         className="object-contain rounded-[22px]"
       />
     ),
+  },
+];
+
+export const tabcategories: Category[] = [
+  {
+    id: 1,
+    name: "Car Spare Parts",
+    image: CarTab,
+  },
+  {
+    id: 2,
+    name: "Bike Spare Parts",
+    image: BikeTab,
+  },
+  {
+    id: 3,
+    name: "Accessories",
+    image: Wheeltab,
+  },
+  {
+    id: 4,
+    name: "Lubrications",
+    image: EngineTab,
+  },
+  {
+    id: 5,
+    name: "Vehicle Wash",
+    image: CarWashTab,
   },
 ];

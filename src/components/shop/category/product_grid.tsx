@@ -1,18 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
-import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { ShoppingCart } from "lucide-react";
 import { products } from "./data";
-import { Button } from "@/components/ui/button";
+import { FaStar } from "react-icons/fa";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { useState } from "react";
+import { Category, CategoryType } from "./interface";
+import { useRouter } from "next/navigation";
 
-const ProductCard = ({ product }) => {
+
+const ProductCard = ({ product,shopcategory }) => {
+  
   const [isFavorite, setIsFavorite] = useState(false);
   const { name, image, price, originalPrice, discount, rating } = product;
+const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/shop/${shopcategory?.id}/${product?.id}`); // Navigate to the product page with the product ID
+  };
+
+  const handleInteractiveClick = (e) => {
+    e.stopPropagation(); // Prevent the card's onClick from firing when clicking buttons or favorite icon
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
+    <div  
+    onClick={handleCardClick}
+    className="flex flex-col items-center justify-center bg-white hover:scale-107 hover:shadow-2xl rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
       <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
         {image}
         <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
@@ -20,7 +34,7 @@ const ProductCard = ({ product }) => {
             <span className="font-bold m-0">{rating}</span>
             <FaStar className="ml-2 text-yellow-500 text-xs" />
           </div>
-          <div className="w-[40px] h-[40px] rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] relative">
+          <div onClick={handleInteractiveClick} className="w-[40px] h-[40px] rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] relative">
             {isFavorite ? (
               <IoIosHeart
                 className="absolute left-[10px] top-[11px] text-[#3c693b] w-5 h-5 cursor-pointer"
@@ -48,13 +62,13 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      <div className="flex gap-2 items-center px-2 pb-2 mt-1">
+      <div onClick={handleInteractiveClick} className="flex gap-2 items-center px-2 pb-2 mt-1">
         <button className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
           Buy Now
         </button>
-        <Button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center">
+        <button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center">
           <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
-        </Button>
+        </button>
       </div>
     </div>
   );
@@ -62,15 +76,15 @@ const ProductCard = ({ product }) => {
 
 const BannerCard = ({ item }) => {
   return (
-    <div className="bg-white rounded-[22px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] flex items-center justify-between p-4 h-full relative">
+    <div className="relative bg-white rounded-none shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] h-[200px] overflow-hidden">
+      {/* Background Image */}
       {item.image}
-      <div className="absolute inset-0 bg-black/30 rounded-[22px]"></div>
-      <div className="flex flex-col gap-2 z-10">
-        <span className="text-2xl font-semibold text-white">{item.name}</span>
-        <span className="text-3xl font-bold text-yellow-300">
-          {item.discount}% Off
-        </span>
-        <button className="bg-[#689567] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-6 py-1 hover:opacity-70 w-fit">
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/10 "></div>
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col justify-end items-center p-6 z-10">
+        
+        <button className="mt-4 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-[14px] px-4 py-1 hover:opacity-70 w-fit">
           Buy Now
         </button>
       </div>
@@ -78,35 +92,59 @@ const BannerCard = ({ item }) => {
   );
 };
 
-const BannerSection = ({ item }) => {
-  return <BannerCard key={item.id} item={item} />;
+const BannerSection = ({ items }) => {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {items.map((item) => (
+        <BannerCard key={item.id} item={item} />
+      ))}
+    </div>
+  );
 };
 
-export default function ProductsGrid() {
+export default function ProductsGrid({tabcategory,shopcategory}:{tabcategory:Category,shopcategory:CategoryType}) {
+  
+  // Track the position in the grid
+  let gridItems = [];
+  let currentIndex = 0;
+
+  // Iterate through products to build the grid
+  while (currentIndex < products.length) {
+    const item = products[currentIndex];
+
+    if (item.type === "product") {
+      // Add product card
+      gridItems.push(
+        <div key={item.id} className="flex justify-center">
+          <ProductCard product={item} shopcategory={shopcategory}/>
+        </div>
+      );
+      currentIndex++;
+    } else if (item.type === "banner") {
+      // Collect all consecutive banner items
+      const bannerItems = [];
+      while (currentIndex < products.length && products[currentIndex].type === "banner") {
+        bannerItems.push(products[currentIndex]);
+        currentIndex++;
+      }
+      // Add banner section spanning 5 columns
+      gridItems.push(
+        <div key={`banner-${bannerItems[0].id}`} className="col-span-5">
+          <div className="bg-white p-4 rounded-[22px]  ">
+            <h2 className="text-2xl font-semibold mb-4 text-start">
+              You Might Be Interested In
+            </h2>
+            <BannerSection items={bannerItems} />
+          </div>
+        </div>
+      );
+    }
+  }
+
   return (
     <section className="py-10 px-48">
       <div className="grid grid-cols-5 gap-6">
-        {products.map((item, index) => (
-          <div
-            key={index}
-            className={
-              item.type === "banner" ? "col-span-5" : "flex justify-center"
-            }
-          >
-            {item.type === "product" ? (
-              <ProductCard product={item} />
-            ) : (
-              <div className="bg-white p-4 rounded-[22px]">
-                <h2 className="text-2xl font-semibold mb-4">
-                  You Might Be Interested In
-                </h2>
-                <div className="grid grid-cols-3 gap-4">
-                  <BannerSection item={item} />
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+        {gridItems}
       </div>
     </section>
   );
