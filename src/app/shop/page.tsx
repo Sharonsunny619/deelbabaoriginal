@@ -1,16 +1,12 @@
-import React from "react";
-import Hero from "../../components/Hero";
-import CategoryGrid from "./components/CategoryGrid";
-import VerticalPromo from "./components/verticalPromo"
+import ShopComponent from '@/components/shop/shop'
+import React from 'react'
 
 export default function Shop() {
   return (
-    <>
-      {/* <Hero /> */}
-      <Hero />
-      <CategoryGrid />
-      <VerticalPromo />
-      {/* Add other home-specific sections here */}
-    </>
-  );
+    <div>
+      <ShopComponent/>
+    </div>
+  )
 }
+
+
