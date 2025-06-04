@@ -26,7 +26,7 @@ const router = useRouter();
   return (
     <div  
     onClick={handleCardClick}
-    className="flex flex-col items-center justify-center bg-white hover:scale-107 hover:shadow-2xl rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
+    className="flex flex-col items-center justify-center bg-white hover:scale-107 hover:shadow-2xl rounded-[22px] w-[260px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
       <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
         {image}
         <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
@@ -142,8 +142,8 @@ export default function ProductsGrid({tabcategory,shopcategory}:{tabcategory:Cat
   }
 
   return (
-    <section className="py-10 px-48">
-      <div className="grid grid-cols-5 gap-6">
+    <section className="py-10 px-72">
+      <div className="grid grid-cols-5 gap-15 ">
         {gridItems}
       </div>
     </section>

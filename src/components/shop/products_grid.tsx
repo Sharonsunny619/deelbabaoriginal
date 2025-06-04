@@ -13,7 +13,7 @@ import { products } from "./data";
   const { name, image, price, originalPrice, discount, rating } = product;
  
   return (
-    <div className="flex flex-col items-center justify-center bg-white rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
+    <div className="flex  flex-col items-center  justify-center bg-white rounded-[22px] w-[260px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
       <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
          {image}
         <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
@@ -37,7 +37,7 @@ import { products } from "./data";
         </span>
       </div>
 
-      <div className="flex flex-col gap-[2px] text-left px-0">
+      <div className="flex flex-col gap-[2px]  px-0">
         <span className="text-lg font-medium text-gray-500 mb-0">{name}</span>
         <span className="text-sm text-gray-500">Lorem Ipsum Dolor Sit Amet</span>
         <div className="flex gap-0.5 mt-1 text-sm text-left">
@@ -84,8 +84,8 @@ const BannerCard = ({ item }) => {
 
 export default function ProductsGrid() {
   return (
-    <section className="py-10 px-48">
-      <div className="grid grid-cols-5 gap-6">
+    <section className="py-10 px-72 ">
+      <div className="grid grid-cols-5 gap-11 ">
         {products.map((item, index) => (
           <div
             key={index}
