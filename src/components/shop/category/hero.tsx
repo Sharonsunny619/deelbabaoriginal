@@ -15,7 +15,6 @@ import Appliances from "./images/appliances.webp";
 import { CategoryType } from "./interface";
 
 export default function CategoryHero({ category }: { category: CategoryType }) {
-  console.log("category", category);
 
   let bannerImage = Fashion;
 

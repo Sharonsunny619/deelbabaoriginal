@@ -9,7 +9,7 @@ export default function Category({ category }: { category: CategoryType }) {
   return (
     <>
       <CategoryHero category={category} />
-      <TabSection/>
+      <TabSection category={category} />
       <CategoryLastHero category={category}/>
     </>
   );

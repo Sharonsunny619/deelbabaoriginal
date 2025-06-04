@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useRef } from "react";
 import { stores } from "./data";
+import { useRouter } from "next/navigation";
 
 export default function NearestStores () {
   const autoplay = useRef(
@@ -13,7 +14,7 @@ export default function NearestStores () {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     autoplay.current,
   ]);
-
+ const router=useRouter()
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
@@ -46,7 +47,7 @@ export default function NearestStores () {
                   {store.offer}
                 </p>
                 <p className="text-[12px] text-gray-500 mt-4 ">{store.valid}</p>
-                <button className="mt-1 w-full bg-[#8DC38C] cursor-pointer hover:bg-black duration-300 active:scale-95 text-white py-2 rounded-[15px] transition flex items-center justify-center gap-2">
+                <button onClick={()=>router.push("/shop")} className="mt-1 w-full bg-[#8DC38C] cursor-pointer hover:bg-black duration-300 active:scale-95 text-white py-2 rounded-[15px] transition flex items-center justify-center gap-2">
                   Visit Store
                   <ArrowRight className="h-4 w-5" />
                 </button>
