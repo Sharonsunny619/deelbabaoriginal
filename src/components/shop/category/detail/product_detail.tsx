@@ -1,23 +1,31 @@
 "use client";
 
 import { useParams, notFound } from "next/navigation";
-import { FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Image from "next/image";
 import { IoHeartOutline } from "react-icons/io5";
 import { products } from "../data";
+import { products as mainproducts } from "../../data";
+
 import Newtab from "./images/newtag.png";
 import Verified from "./images/verified.png";
+import cash from "./images/2612cc91b836effa38244ffc9c28d970688b93a6.png";
+import truck from "./images/truck.png";
+import box from "./images/box.png";
+import Reviewpic from "./images/reviewpic.jpg";
 
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { reviews, sizes } from "./data";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 
 const ProductDetailPage = () => {
   const params = useParams();
-  console.log("params", params);
 
   const productId = params.product_id;
-
-  const product = products.find((p) => p.id === Number(productId));
-  console.log("product", product);
+  const productArray = params.id === "null" ? mainproducts : products;
+  const product = productArray.find((p) => p.id === Number(productId));
+  console.log("products", productArray);
 
   if (!product) {
     notFound();
@@ -26,6 +34,43 @@ const ProductDetailPage = () => {
   const { name, description, price, originalPrice, discount, rating, image } =
     product;
 
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleViewMoreReviews = () => {
+    setVisibleCount(4);
+  };
+
+  const handleSeeLess = () => {
+    setVisibleCount(3);
+  };
+
+  const handleInteractiveClick = (e) => {
+    e.stopPropagation();
+  };
+
+  const StarRating = ({ rating }) => {
+    const maxStars = 5;
+    const filledStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    const emptyStars = maxStars - Math.ceil(rating);
+
+    return (
+      <div className="flex items-center gap-1">
+        {[...Array(filledStars)].map((_, index) => (
+          <FaStar key={`filled-${index}`} className="text-[#26A43A] text-sm" />
+        ))}
+        {hasHalfStar && <FaStarHalfAlt className="text-[#26A43A] text-sm" />}
+        {[...Array(emptyStars)].map((_, index) => (
+          <FaRegStar
+            key={`empty-${index}`}
+            className="text-[#26A43A] text-sm"
+          />
+        ))}
+      </div>
+    );
+  };
   return (
     <section className="py-10 px-56 bg-[#fffff5]">
       <div className="flex gap-8 ">
@@ -50,9 +95,24 @@ const ProductDetailPage = () => {
               ,
             </div>
 
-            <div className="absolute top-2 right-2">
-              <IoHeartOutline className="text-2xl text-gray-600 cursor-pointer hover:text-red-500" />
+            <div
+              onClick={handleInteractiveClick}
+              className="w-[40px] h-[40px] rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] absolute top-2 right-2"
+            >
+              {isFavorite ? (
+                <IoIosHeart
+                  className="absolute left-[10px] top-[11px] text-[#3c693b] w-5 h-5 cursor-pointer"
+                  onClick={() => setIsFavorite(false)}
+                />
+              ) : (
+                <IoIosHeartEmpty
+                  className="absolute left-[10px] top-[11px] text-[#3c693b] w-5 h-5 cursor-pointer"
+                  onClick={() => setIsFavorite(true)}
+                />
+              )}
             </div>
+
+             
           </div>
           <div className="flex  gap-2 justify-center bg-[#edeef1] -mt-5 z-50 py-2 border-t-[1px] border-gray-300">
             {[1, 2, 3].map((_, index) => (
@@ -111,7 +171,7 @@ const ProductDetailPage = () => {
 
           {/* Seller Information */}
           <div className="flex flex-col items-start gap-1 mt-2">
-            <p className="text-sm text-gray-600 font-semibold">Seller</p>
+            <p className="text-[16px] text-[#373737] font-bold">Seller</p>
             <div className="flex items-center gap-2">
               <p className="text-[#252525] hover:underline cursor-pointer">
                 ADIDAS INDIA MARKETING PRIVATE LIMITED
@@ -135,12 +195,12 @@ const ProductDetailPage = () => {
               <span className="text-lg font-semibold">{rating}</span>
               <FaStar className="text-yellow-400 text-lg" />
             </div>
-            <span className="text-sm text-gray-500">(1,528 ratings)</span>
+            <span className="text-[16px] text-gray-500">(1,528 ratings)</span>
           </div>
-
+          <div className="w-full h-[1px] bg-gray-200 mt-2" />
           {/* Color Selector (Mocked - Add actual colors if available in data) */}
           <div className="flex flex-col gap-2">
-            <span className="text-sm font-semibold text-gray-700">Colour</span>
+            <span className="text-[16px] text-[#373737] font-bold">Colour</span>
             <div className="flex gap-2">
               {["#d1a3a4", "#ffffff", "#a3a4d1"].map((color, index) => (
                 <div
@@ -154,51 +214,79 @@ const ProductDetailPage = () => {
 
           {/* Size Selector (Mocked - Add actual sizes if available in data) */}
           <div className="flex flex-col gap-2">
-            <span className="text-sm font-semibold text-gray-700">Size</span>
+            <span className="text-[16px] text-[#373737] font-bold">Size</span>
             <div className="flex gap-2 flex-wrap">
-              {["4", "4.5", "5", "5.5", "6", "7", "8", "9", "10"].map(
-                (size, index) => (
-                  <button
-                    key={index}
-                    className="px-4 py-1 border border-gray-300 rounded-[5px] text-sm hover:bg-gray-100 transition duration-300"
-                  >
-                    UK {size}
-                  </button>
-                )
-              )}
-              <span className="text-blue-600 text-sm cursor-pointer hover:underline">
+              {sizes.map((size, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedSize(size)}
+                  className={`px-4 py-[8px] rounded-md text-[16px] font-semibold transition duration-300 active:scale-90 cursor-pointer shadow-md
+            ${
+              selectedSize === size
+                ? "bg-[#689567] text-white"
+                : "bg-white text-[#303030] hover:bg-gray-100"
+            }`}
+                >
+                  UK {size}
+                </button>
+              ))}
+              <span className="text-blue-600 text-[16px] mt-2 font-semibold cursor-pointer hover:underline">
                 Size chart
               </span>
             </div>
           </div>
 
+          <div className="w-full h-[1px] bg-gray-200 mt-2" />
           {/* Delivery Options (Mocked) */}
-          <div className="flex gap-2 text-sm text-gray-600">
-            <span className="cursor-pointer hover:underline">
+          <div className="flex gap-8 text-sm text-gray-600">
+            <div className="cursor-pointer hover:underline flex flex-col items-center justify-center">
+              <Image
+                src={cash}
+                alt="cash"
+                width={30}
+                height={30}
+                className="rounded-[5px]"
+              />
               Check delivery
-            </span>
-            <span>|</span>
-            <span className="cursor-pointer hover:underline">
+            </div>
+
+            <div className="cursor-pointer hover:underline  flex flex-col items-center justify-center">
+              <Image
+                src={truck}
+                alt="truck"
+                width={30}
+                height={30}
+                className="rounded-[5px]"
+              />
               Free delivery
-            </span>
-            <span>|</span>
-            <span className="cursor-pointer hover:underline">
+            </div>
+
+            <span className="cursor-pointer hover:underline  flex flex-col items-center justify-center">
+              <Image
+                src={box}
+                alt="box"
+                width={30}
+                height={30}
+                className="rounded-[5px]"
+              />
               Initiating on delivery
             </span>
           </div>
-
+          <div className="w-full h-[1px] bg-gray-200 mt-2" />
           {/* Description */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-lg font-semibold text-gray-800">Description</h2>
-            <p className="text-sm text-gray-600">{description}</p>
+            <h2 className="text-[18px] font-bold text-[#373737]">
+              Description
+            </h2>
+            <p className="text-sm text-[#919191] font-bold">{description}</p>
           </div>
 
           {/* Product Details */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h2 className="text-[18px] font-bold text-[#373737]">
               Product Details
             </h2>
-            <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
+            <div className="grid grid-cols-1 gap-2 text-sm text-[#373737]">
               <div>
                 <span className="font-semibold">Closure type:</span> Lace-Up
               </div>
@@ -220,42 +308,74 @@ const ProductDetailPage = () => {
               </div>
             </div>
           </div>
-
+          <div className="w-full h-[1px] bg-gray-200 mt-2" />
           {/* Ratings & Reviews */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-lg font-semibold text-gray-800">
-              Ratings & Reviews (1,528 ratings and 91 reviews)
+            <h2 className="text-[18px] font-bold text-gray-800 flex gap-2">
+              Ratings & Reviews{" "}
+              <p className="text-[#525252]">(1,528 ratings and 91 reviews)</p>
             </h2>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-semibold">{rating}</span>
-              <FaStar className="text-yellow-400 text-xl" />
-              <span className="text-sm text-gray-500">Very Good</span>
+            <div className="flex  items-start justify-between ">
+              <div className="flex flex-col ">
+                <span className="text-[50px]  text-[#689567] font-semibold -mb-2">
+                  {rating}
+                </span>
+                <p className="text-[16px] text-black font-bold">Very Good</p>
+              </div>
+              <button className="w-fit bg-[#28a745] text-white text-sm font-semibold rounded-[5px] px-4 py-2 hover:bg-[#218838] transition duration-300">
+                Rate Product
+              </button>
             </div>
             {/* Review Button */}
-            <button className="w-fit bg-[#28a745] text-white text-sm font-semibold rounded-[5px] px-4 py-2 hover:bg-[#218838] transition duration-300">
-              Rate Product
-            </button>
             {/* Reviews (Mocked - Add actual reviews if available) */}
             <div className="flex flex-col gap-4 mt-4">
-              {[
-                { name: "Andrea Luiz", rating: 5, comment: description },
-                { name: "Andrea Luiz", rating: 5, comment: description },
-                { name: "Andrea Luiz", rating: 5, comment: description },
-              ].map((review, index) => (
+              {reviews.slice(0, visibleCount).map((review, index) => (
                 <div key={index} className="flex flex-col gap-1">
-                  <div className="flex items-center gap-1">
-                    <span className="text-sm font-semibold">
-                      {review.rating}
-                    </span>
-                    <FaStar className="text-yellow-400 text-sm" />
+                  <p className="text-xs text-black font-bold">{review.name}</p>
+                  <div className="flex items-start justify-start gap-2">
+                    <Image
+                      src={Reviewpic}
+                      alt="Reviewpic"
+                      width={35}
+                      height={35}
+                      className="rounded-[5px]"
+                    />
+                    <Image
+                      src={Reviewpic}
+                      alt="Reviewpic"
+                      width={35}
+                      height={35}
+                      className="rounded-[5px]"
+                    />
+                    <Image
+                      src={Reviewpic}
+                      alt="Reviewpic"
+                      width={35}
+                      height={35}
+                      className="rounded-[5px]"
+                    />
                   </div>
-                  <p className="text-sm text-gray-600">{review.comment}</p>
-                  <p className="text-xs text-gray-500">By {review.name}</p>
+                  <StarRating rating={review.rating} />
+                  <p className="text-[14px] text-[#919191] font-bold">
+                    {review.comment}
+                  </p>
                 </div>
               ))}
-              <span className="text-blue-600 text-sm cursor-pointer hover:underline">
-                View all reviews
-              </span>
+              {visibleCount < reviews.length ? (
+                <span
+                  onClick={handleViewMoreReviews}
+                  className="text-blue-600 text-sm cursor-pointer hover:underline font-bold"
+                >
+                  See More
+                </span>
+              ) : (
+                <span
+                  onClick={handleSeeLess}
+                  className="text-blue-600 text-sm cursor-pointer hover:underline font-bold"
+                >
+                  See Less
+                </span>
+              )}
             </div>
           </div>
         </div>

@@ -1,9 +1,12 @@
+"use client"
 import Image from "next/image";
 import React from "react";
 import PurchaseFromNearestStore from "./images/purchase_nearest_store.png";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function PurchaseNearestBanner() {
+  const router = useRouter()
   return (
     <div className="relative w-full h-[480px] mb-6 bg-[#fffef4] flex justify-end items-center overflow-hidden">
       {/* Green background with text */}
@@ -25,7 +28,7 @@ export default function PurchaseNearestBanner() {
             <br /> Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore <br />{" "}
             Magna Aliqua
           </p>
-          <button className="mt-6  px-6 py-2 font-semibold cursor-pointer hover:bg-black active:scale-95 bg-[#689567] text-white rounded-2xl shadow-md duration-300">
+          <button onClick={()=> router.push("/shop")} className="mt-6  px-6 py-2 font-semibold cursor-pointer hover:bg-black active:scale-95 bg-[#689567] text-white rounded-2xl shadow-md duration-300">
             <div className="justify-center items-center flex gap-2">
               {" "}
               Explore <ArrowRight />

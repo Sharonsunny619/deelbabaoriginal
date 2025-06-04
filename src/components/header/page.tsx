@@ -1,5 +1,6 @@
+
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Deelbaba from "./images/deelbaba";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,13 +10,12 @@ import {
   User,
   Wallet,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Input } from "../ui/input";
 import { profileMenuItems, tabs } from "./data";
 
 export default function Header() {
-  
   const [activeTab, setActiveTab] = useState("/");
   const [isHovered, setIsHovered] = useState(false);
   const [open, setOpen] = React.useState({
@@ -23,6 +23,18 @@ export default function Header() {
     user: false,
   });
   const router = useRouter();
+  const pathname = usePathname();  
+
+  
+ useEffect(() => {
+   const basePath = "/" + pathname.split("/")[1];  
+  const currentTab = tabs.find((tab) => tab.url === basePath);
+  if (currentTab) {
+    setActiveTab(currentTab.url);
+  } else {
+    setActiveTab("/");   
+  }
+}, [pathname]); 
 
   const handleTabClick = (tabUrl: string) => {
     setActiveTab(tabUrl);
@@ -30,7 +42,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed z-50 bg-[#fffef4] h-[80px] top-0 w-full px-16 py-3  shadow-md flex items-center justify-between">
+    <header className="fixed z-50 bg-[#fffef4] h-[80px] top-0 w-full px-16 py-3 shadow-md flex items-center justify-between">
       {/* Logo Section */}
       <div
         className="flex items-center cursor-pointer"
@@ -85,8 +97,8 @@ export default function Header() {
           </PopoverTrigger>
           {open.wallet && <div className="fixed inset-0 bg-black/20 z-40" />}
           <PopoverContent className="relative w-[330px] p-0 bg-white rounded-3xl shadow-lg border-none">
-            <div className="flex flex-col items-center  text-center gap-4 z-10">
-              <div className="rounded-t-2xl shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] gap-5 w-full py-7  flex items-center justify-center">
+            <div className="flex flex-col items-center text-center gap-4 z-10">
+              <div className="rounded-t-2xl shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] gap-5 w-full py-7 flex items-center justify-center">
                 <Wallet className="h-8 w-8 text-[#689567]" />
                 <h2 className="text-[14px] font-semibold">Wallet</h2>
               </div>
@@ -112,10 +124,10 @@ export default function Header() {
                 </p>
               </div>
 
-              <Button className="w-[266px] transition active:scale-95 cursor-pointer  text-white rounded-xl py-2 text-sm font-[590] bg-[#5a8159] hover:bg-[#699568]">
+              <Button className="w-[266px] transition active:scale-95 cursor-pointer text-white rounded-xl py-2 text-sm font-[590] bg-[#5a8159] hover:bg-[#699568]">
                 Top Up
               </Button>
-              <div className="h-[1px] bg-gray-100  " />
+              <div className="h-[1px] bg-gray-100" />
 
               <Button
                 variant="outline"
@@ -137,16 +149,15 @@ export default function Header() {
         >
           <PopoverTrigger asChild>
             <Button className="bg-[#fffef4] transition active:scale-95 cursor-pointer rounded-full h-10 w-10 hover:bg-gray-100 shadow-none">
-              {" "}
-              <User className="h-6 w-6 text-gray-700 " />
+              <User className="h-6 w-6 text-gray-700" />
             </Button>
           </PopoverTrigger>
           {open.user && <div className="fixed inset-0 bg-black/20 z-40" />}
 
-          <PopoverContent className="w-[300px]  bg-white rounded-3xl shadow-lg border-none p-0">
+          <PopoverContent className="w-[300px] bg-white rounded-3xl shadow-lg border-none p-0">
             <div className="flex flex-col gap-2">
               <div className="shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] rounded-t-2xl flex items-center justify-center">
-                <Button className="group font-[700] text-[14px]  relative h-8 my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-9 py-4 cursor-pointer transition active:scale-95">
+                <Button className="group font-[700] text-[14px] relative h-8 my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-9 py-4 cursor-pointer transition active:scale-95">
                   Login/Register
                 </Button>
               </div>
@@ -154,7 +165,7 @@ export default function Header() {
                 {profileMenuItems.map((item, index) => (
                   <a
                     key={index}
-                    className="w-full gap-2 text-[#689567] font-medium px-3  cursor-pointer rounded-md"
+                    className="w-full gap-2 text-[#689567] font-medium px-3 cursor-pointer rounded-md"
                   >
                     <div className="flex px-7 items-start justify-start gap-3">
                       <div className="mt-[1px]">{item.icon}</div>
@@ -172,7 +183,10 @@ export default function Header() {
           </PopoverContent>
         </Popover>
 
-        <Button  onClick={()=> router.push("/login")} className="group relative h-10 overflow-hidden rounded-lg bg-black text-white px-6 py-2 cursor-pointer transition active:scale-95">
+        <Button
+          onClick={() => router.push("/login")}
+          className="group relative h-10 overflow-hidden rounded-lg bg-black text-white px-6 py-2 cursor-pointer transition active:scale-95"
+        >
           <span className="relative z-10 font-[600]">Login/Register</span>
           <span className="absolute inset-0 overflow-hidden rounded-lg">
             <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-[#689567] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
@@ -182,5 +196,3 @@ export default function Header() {
     </header>
   );
 }
-
-

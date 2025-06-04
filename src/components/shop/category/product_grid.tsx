@@ -8,25 +8,24 @@ import { useState } from "react";
 import { Category, CategoryType } from "./interface";
 import { useRouter } from "next/navigation";
 
-
-const ProductCard = ({ product,shopcategory }) => {
-  
+const ProductCard = ({ product, shopcategory }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { name, image, price, originalPrice, discount, rating } = product;
-const router = useRouter();
+  const router = useRouter();
 
   const handleCardClick = () => {
-    router.push(`/shop/${shopcategory?.id}/${product?.id}`); // Navigate to the product page with the product ID
+    router.push(`/shop/${shopcategory?.id}/${product?.id}`);  
   };
 
   const handleInteractiveClick = (e) => {
-    e.stopPropagation(); // Prevent the card's onClick from firing when clicking buttons or favorite icon
+    e.stopPropagation();  
   };
 
   return (
-    <div  
-    onClick={handleCardClick}
-    className="flex flex-col items-center justify-center bg-white hover:scale-107 hover:shadow-2xl rounded-[22px] w-[260px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]">
+    <div
+      onClick={handleCardClick}
+      className="flex flex-col items-center justify-center bg-white hover:scale-107 hover:shadow-2xl rounded-[22px] w-[260px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]"
+    >
       <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
         {image}
         <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
@@ -34,7 +33,10 @@ const router = useRouter();
             <span className="font-bold m-0">{rating}</span>
             <FaStar className="ml-2 text-yellow-500 text-xs" />
           </div>
-          <div onClick={handleInteractiveClick} className="w-[40px] h-[40px] rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] relative">
+          <div
+            onClick={handleInteractiveClick}
+            className="w-[40px] h-[40px] rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] relative"
+          >
             {isFavorite ? (
               <IoIosHeart
                 className="absolute left-[10px] top-[11px] text-[#3c693b] w-5 h-5 cursor-pointer"
@@ -62,7 +64,10 @@ const router = useRouter();
         </div>
       </div>
 
-      <div onClick={handleInteractiveClick} className="flex gap-2 items-center px-2 pb-2 mt-1">
+      <div
+        onClick={handleInteractiveClick}
+        className="flex gap-2 items-center px-2 pb-2 mt-1"
+      >
         <button className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
           Buy Now
         </button>
@@ -83,7 +88,6 @@ const BannerCard = ({ item }) => {
       <div className="absolute inset-0 bg-black/10 "></div>
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end items-center p-6 z-10">
-        
         <button className="mt-4 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-[14px] px-4 py-1 hover:opacity-70 w-fit">
           Buy Now
         </button>
@@ -102,8 +106,13 @@ const BannerSection = ({ items }) => {
   );
 };
 
-export default function ProductsGrid({tabcategory,shopcategory}:{tabcategory:Category,shopcategory:CategoryType}) {
-  
+export default function ProductsGrid({
+  tabcategory,
+  shopcategory,
+}: {
+  tabcategory: Category;
+  shopcategory: CategoryType;
+}) {
   // Track the position in the grid
   let gridItems = [];
   let currentIndex = 0;
@@ -116,14 +125,17 @@ export default function ProductsGrid({tabcategory,shopcategory}:{tabcategory:Cat
       // Add product card
       gridItems.push(
         <div key={item.id} className="flex justify-center">
-          <ProductCard product={item} shopcategory={shopcategory}/>
+          <ProductCard product={item} shopcategory={shopcategory} />
         </div>
       );
       currentIndex++;
     } else if (item.type === "banner") {
       // Collect all consecutive banner items
       const bannerItems = [];
-      while (currentIndex < products.length && products[currentIndex].type === "banner") {
+      while (
+        currentIndex < products.length &&
+        products[currentIndex].type === "banner"
+      ) {
         bannerItems.push(products[currentIndex]);
         currentIndex++;
       }
@@ -143,9 +155,7 @@ export default function ProductsGrid({tabcategory,shopcategory}:{tabcategory:Cat
 
   return (
     <section className="py-10 px-72">
-      <div className="grid grid-cols-5 gap-15 ">
-        {gridItems}
-      </div>
+      <div className="grid grid-cols-5 gap-15 ">{gridItems}</div>
     </section>
   );
 }
