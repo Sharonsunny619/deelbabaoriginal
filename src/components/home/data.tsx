@@ -10,6 +10,9 @@ import Driver from "./images/driver.png";
 import Plumber from "./images/plumber.png";
 import Nurse from "./images/nurse.jpg";
 import Product from "./images/product.png";
+import Product2 from "../shop/images/productglass.jpg";
+ 
+
 
 export const serviceProviders = [
   {
@@ -421,7 +424,7 @@ export const products = [
   {
     id: 2,
     name: "Fossil",
-    image: Product.src,
+    image: Product2.src,
     brand: "Fossil",
     price: 1199,
     originalPrice: 1499,
@@ -441,7 +444,7 @@ export const products = [
   {
     id: 4,
     name: "Allensolly",
-    image: Product.src,
+    image: Product2.src,
     brand: "Allensolly",
     price: 1199,
     originalPrice: 1499,
@@ -461,7 +464,7 @@ export const products = [
   {
     id: 6,
     name: "Allensolly",
-    image: Product.src,
+    image: Product2.src,
     brand: "Allensolly",
     price: 1199,
     originalPrice: 1499,
@@ -481,7 +484,7 @@ export const products = [
   {
     id: 8,
     name: "Allensolly",
-    image: Product.src,
+    image: Product2.src,
     brand: "Allensolly",
     price: 1199,
     originalPrice: 1499,
