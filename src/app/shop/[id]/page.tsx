@@ -3,7 +3,7 @@ import { categories } from "@/components/shop/data";
 import React from "react";
 
 
-export default function CategoryPage({ params }: { params: { id: string } }) {
+export default function CategoryPage({ params }) {
   const category = categories.find((cat) => cat.id === parseInt(params.id));
  
  
