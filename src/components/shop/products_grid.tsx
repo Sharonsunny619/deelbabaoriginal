@@ -7,11 +7,15 @@ import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { ShoppingCart } from "lucide-react";
 import { products } from "./data";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/app/lib/cartSlice";
 
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { name, image, price, originalPrice, discount, rating } = product;
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [selectedSize] = useState<string | null>(null);
 
   const handleCardClick = () => {
     router.push(`/shop/null/${product?.id}`);
@@ -70,7 +74,21 @@ const ProductCard = ({ product }) => {
         <button className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
           Buy Now
         </button>
-        <Button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center">
+        <Button
+          onClick={() => {
+            dispatch(
+              addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: image.props.src.src,
+                quantity: 1,
+                size: selectedSize,
+              })
+            );
+          }}
+          className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center"
+        >
           <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
         </Button>
       </div>

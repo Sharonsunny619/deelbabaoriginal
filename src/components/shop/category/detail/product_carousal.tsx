@@ -3,11 +3,13 @@ import { useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { FaStar } from "react-icons/fa";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
- import { ArrowLeft, ArrowRight, ShoppingCart } from "lucide-react";
- import { useRouter } from "next/navigation";
- import { Button } from "@/components/ui/button";
+import { ArrowLeft, ArrowRight, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import { products } from "@/components/home/data";
- 
+import { addToCart } from "@/app/lib/cartSlice";
+import { useDispatch } from "react-redux";
+
 export default function FeaturedProducts() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const scrollPrev = useCallback(
@@ -57,6 +59,8 @@ export default function FeaturedProducts() {
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [selectedSize] = useState<string | null>(null);
 
   const { name, image, price, originalPrice, discount, rating } = product;
   const handleCardClick = () => {
@@ -116,7 +120,21 @@ const ProductCard = ({ product }) => {
         <button className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
           Buy Now
         </button>
-        <Button className="border-[1.5px]  hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[37px] h-[37px] p-1.5 flex items-center justify-center">
+        <Button
+          onClick={() => {
+            dispatch(
+              addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1,
+                size: selectedSize,
+              })
+            );
+          }}
+          className="border-[1.5px]  hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[37px] h-[37px] p-1.5 flex items-center justify-center"
+        >
           <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
         </Button>
       </div>

@@ -178,7 +178,8 @@ const ProductDetailPage = () => {
                 GO TO CART
               </Button>
             ) : (
-              <Button
+
+               <Button
                 className="group font-[700] text-[14px]  relative h-13 overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95"
                 onClick={() => {
                   if (!selectedSize) {

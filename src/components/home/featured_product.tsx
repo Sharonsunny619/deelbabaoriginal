@@ -7,6 +7,8 @@ import { products } from "./data";
 import { ArrowLeft, ArrowRight, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/app/lib/cartSlice";
 
 export default function FeaturedProducts() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
@@ -58,6 +60,8 @@ export default function FeaturedProducts() {
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const dispatch = useDispatch();
 
   const { name, image, price, originalPrice, discount, rating } = product;
   const handleCardClick = () => {
@@ -117,7 +121,21 @@ const ProductCard = ({ product }) => {
         <button className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
           Buy Now
         </button>
-        <Button className="border-[1.5px]  hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[37px] h-[37px] p-1.5 flex items-center justify-center">
+        <Button
+          onClick={() => {
+            dispatch(
+              addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1,
+                size: selectedSize,
+              })
+            );
+          }}
+          className="border-[1.5px]  hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[37px] h-[37px] p-1.5 flex items-center justify-center"
+        >
           <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
         </Button>
       </div>

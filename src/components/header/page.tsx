@@ -71,7 +71,7 @@ export default function Header() {
             className={`rounded-full cursor-pointer px-6 py-2 font-semibold transition-colors duration-300 ${
               activeTab === tab.url
                 ? "hover:text-gray-300 bg-gradient-to-r from-black to-gray-500 text-white"
-                : "text-gray-800 bg-[#FFFEF4] hover:bg-[#FFFEF4] transition hover:scale-110 hover:text-gray-600"
+                : "text-gray-800 bg-[#FFFEF4] hover:bg-[#FFFEF4] transition hover:scale-108 hover:text-gray-600"
             }`}
           >
             {tab.title}
@@ -170,7 +170,10 @@ export default function Header() {
           <PopoverContent className="w-[300px] bg-white rounded-3xl shadow-lg border-none p-0">
             <div className="flex flex-col gap-2">
               <div className="shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] rounded-t-2xl flex items-center justify-center">
-                <Button className="group font-[700] text-[14px] relative h-8 my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-9 py-4 cursor-pointer transition active:scale-95">
+                <Button
+                  onClick={() => router.push("/login")}
+                  className="group font-[700] text-[14px] relative h-8 my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-9 py-4 cursor-pointer transition active:scale-95"
+                >
                   Login/Register
                 </Button>
               </div>
