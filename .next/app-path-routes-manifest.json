@@ -1,0 +1,15 @@
+{
+  "/favicon.ico/route": "/favicon.ico",
+  "/cart/page": "/cart",
+  "/about-us/page": "/about-us",
+  "/contact/page": "/contact",
+  "/home/page": "/home",
+  "/login/page": "/login",
+  "/services/page": "/services",
+  "/shop/[id]/[product_id]/page": "/shop/[id]/[product_id]",
+  "/shop/page": "/shop",
+  "/signup/page": "/signup",
+  "/page": "/",
+  "/shop/[id]/page": "/shop/[id]",
+  "/_not-found/page": "/_not-found"
+}
