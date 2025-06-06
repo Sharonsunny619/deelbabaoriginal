@@ -60,7 +60,7 @@ export default function FeaturedProducts() {
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [selectedSize] = useState<string | null>(null);
   const dispatch = useDispatch();
 
   const { name, image, price, originalPrice, discount, rating } = product;
@@ -118,7 +118,9 @@ const ProductCard = ({ product }) => {
         onClick={handleInteractiveClick}
         className="flex gap-2 items-center px-2 pb-2"
       >
-        <button className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
+        <button
+        onClick={()=> router.push("/payment-page")}
+        className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
           Buy Now
         </button>
         <Button

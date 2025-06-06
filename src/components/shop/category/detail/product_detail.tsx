@@ -167,7 +167,7 @@ const ProductDetailPage = () => {
           </div>
           {/* Buy Now and Add to Cart Buttons */}
           <div className="grid grid-cols-2 gap-4 mt-4">
-            <Button className="group font-[700] text-[14px]  relative h-13  overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95">
+            <Button onClick={()=> router.push("/payment-page")} className="group font-[700] text-[14px]  relative h-13  overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95">
               BUY NOW
             </Button>
             {isInCart ? (

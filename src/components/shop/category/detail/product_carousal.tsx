@@ -117,7 +117,7 @@ const ProductCard = ({ product }) => {
         onClick={handleInteractiveClick}
         className="flex gap-2 items-center px-2 pb-2"
       >
-        <button className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
+        <button onClick={()=> router.push("/payment-page")} className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
           Buy Now
         </button>
         <Button

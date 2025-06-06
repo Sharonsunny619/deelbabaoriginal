@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Address from "@/components/payment_page/address";
- import { CreditCard, MapPin, ShoppingBag } from "lucide-react";
+import { CreditCard, MapPin, ShoppingBag } from "lucide-react";
 import Deelbaba from "@/components/header/images/deelbaba";
 import { useRouter } from "next/navigation";
 import SelectPayment from "@/components/payment_page/select_payment";
@@ -9,7 +9,7 @@ import SelectPayment from "@/components/payment_page/select_payment";
 export default function Payment() {
   const [step, setStep] = useState<"BAG" | "ADDRESS" | "PAYMENT">("ADDRESS");
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const router = useRouter();
   const handleContinue = () => {
     if (step === "ADDRESS") {
@@ -20,16 +20,16 @@ export default function Payment() {
   return (
     <div>
       <div
-              className="flex items-center cursor-pointer"
-              onClick={() => router.push("/home")}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <Deelbaba
-                colorA={isHovered ? "#A6E8A4" : "#689567"}
-                colorB={isHovered ? "#689567" : "#A6E8A4"}
-              />
-            </div>
+        className="flex items-center cursor-pointer"
+        onClick={() => router.push("/home")}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <Deelbaba
+          colorA={isHovered ? "#A6E8A4" : "#689567"}
+          colorB={isHovered ? "#689567" : "#A6E8A4"}
+        />
+      </div>
       {/* Stepper */}
       <div className="flex items-center justify-center mb-8">
         <div className="flex items-center">

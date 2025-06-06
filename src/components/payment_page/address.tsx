@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -7,30 +8,27 @@ import { Trash2 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import ShoeImage from "../home/images/product.png";
 import AddressModal from "./address_modal";
-
-const initialCartItems = [
-  {
-    id: 1,
-    name: "Ultraboost 1.0 Shoes",
-    description: "Lorem Ipsum Color Support, Consecutive Adipiscing Elit",
-    price: 7500,
-    quantity: 1,
-    image: ShoeImage,
-  },
-  {
-    id: 2,
-    name: "Ultraboost 1.0 Shoes",
-    description: "Lorem Ipsum Color Support, Consecutive Adipiscing Elit",
-    price: 7500,
-    quantity: 1,
-    image: ShoeImage,
-  },
-];
+import { RootState } from "@/app/lib/store";
+ 
+interface CartItem {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
 
 interface Address {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
+  pincode: string;
+  street: string;
   type: string;
+  city: string;
+  state: string;
+  country: string;
   address: string;
   mobile: string;
 }
@@ -40,39 +38,65 @@ interface AddressProps {
 }
 
 const Address: React.FC<AddressProps> = ({ onContinue }) => {
-  const [cartItems] = useState(initialCartItems);
+   const cartItems = useSelector((state: RootState) => state.cart.items);
+
   const [addresses, setAddresses] = useState<Address[]>([
     {
       id: "1",
-      name: "John Mathew",
+      firstName: "John",
+      lastName: "Mathew",
+      pincode: "682030",
+      street: "MG Road",
       type: "Home",
+      city: "Kochi",
+      state: "Kerala",
+      country: "India",
       address:
         "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua",
       mobile: "1249567890",
     },
     {
       id: "2",
-      name: "John Mathew",
+      firstName: "John",
+      lastName: "Mathew",
+      pincode: "682030",
+      street: "MG Road",
       type: "Home",
+      city: "Kochi",
+      state: "Kerala",
+      country: "India",
       address:
         "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua",
       mobile: "1249567890",
     },
     {
       id: "3",
-      name: "John Mathew",
+      firstName: "John",
+      lastName: "Mathew",
+      pincode: "682030",
+      street: "MG Road",
       type: "Home",
+      city: "Kochi",
+      state: "Kerala",
+      country: "India",
       address:
         "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua",
       mobile: "1249567890",
     },
   ]);
+
   const [selectedAddress, setSelectedAddress] = useState("1");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editAddress, setEditAddress] = useState<Address>({
     id: "",
-    name: "",
+    firstName: "",
+    lastName: "",
+    pincode: "",
+    street: "",
     type: "",
+    city: "",
+    state: "",
+    country: "",
     address: "",
     mobile: "",
   });
@@ -81,9 +105,19 @@ const Address: React.FC<AddressProps> = ({ onContinue }) => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const discount = 2100;
+  const discount = cartItems.length > 0 ? 2100 : 0;  
   const delivery = 0;
   const total = subtotal - discount + delivery;
+
+   const currentDate = new Date("2025-06-06");
+  const deliveryDate = new Date(currentDate);
+  deliveryDate.setDate(currentDate.getDate() + 5);
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+    month: "short",
+    day: "2-digit",
+  };
+  const formattedDeliveryDate = deliveryDate.toLocaleDateString("en-US", options);
 
   const handleEditClick = (address: Address) => {
     setEditAddress(address);
@@ -93,8 +127,14 @@ const Address: React.FC<AddressProps> = ({ onContinue }) => {
   const handleAddNewClick = () => {
     setEditAddress({
       id: `${Date.now()}`, // Simple unique ID generation
-      name: "",
+      firstName: "",
+      lastName: "",
+      pincode: "",
+      street: "",
       type: "",
+      city: "",
+      state: "",
+      country: "",
       address: "",
       mobile: "",
     });
@@ -132,36 +172,36 @@ const Address: React.FC<AddressProps> = ({ onContinue }) => {
             <RadioGroup
               value={selectedAddress}
               onValueChange={setSelectedAddress}
-              className="space-y-4 "
+              className="space-y-4"
             >
               {addresses.map((address) => (
                 <Card
                   key={address.id}
-                  className="p-4  bg-white border border-gray-200 rounded-xl flex items-start gap-4 shadow-none"
+                  className="p-4 bg-white border border-gray-200 rounded-xl flex items-start gap-4 shadow-none"
                 >
                   <div className="flex-1">
-                    <div className="grid grid-cols-12 w-full  gap-4 items-center">
-                    
-                        <RadioGroupItem
-                          value={address.id}
-                          id={address.id}
-                          className="cursor-pointer "
-                        />
-                  
-                      <div className="col-span-10  ">
+                    <div className="grid grid-cols-12 w-full gap-4 items-center">
+                      <RadioGroupItem
+                        value={address.id}
+                        id={address.id}
+                        className="cursor-pointer"
+                      />
+                      <div className="col-span-10">
                         <div className="flex items-center gap-2">
                           <h2 className="text-lg font-semibold">
-                            {address.name}
+                            {address.firstName} {address.lastName}
                           </h2>
                           <div className="text-[12px] px-2 text-white bg-[#689567] rounded-lg">
                             {address.type}
                           </div>
                         </div>
                         <p className="text-sm text-gray-500 mt-1">
-                          {address.address}
+                          {address.address}, {address.street}, {address.city},{" "}
+                          {address.state}, {address.country} - {address.pincode}
                         </p>
                         <p className="text-sm text-gray-500 mt-2">
-                          Mobile: <span className="font-bold">{address.mobile}</span>
+                          Mobile:{" "}
+                          <span className="font-bold">{address.mobile}</span>
                         </p>
                         {selectedAddress === address.id && (
                           <Button
@@ -172,18 +212,14 @@ const Address: React.FC<AddressProps> = ({ onContinue }) => {
                           </Button>
                         )}
                       </div>
-                    
-                 
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="text-gray-500 hover:text-red-500  cursor-pointer active:scale-90 transition duration-300"
-                            onClick={() => handleDeleteAddress(address.id)}
-                          >
-                            <Trash2 className="w-5 h-5" />
-                          </Button>
-                   
-                    
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-gray-500 hover:text-red-500 cursor-pointer active:scale-90 transition duration-300"
+                        onClick={() => handleDeleteAddress(address.id)}
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </Button>
                     </div>
                   </div>
                 </Card>
@@ -200,65 +236,74 @@ const Address: React.FC<AddressProps> = ({ onContinue }) => {
 
           <div className="w-full mt-[52px]">
             <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-none">
-              {cartItems.map((item) => (
-                <div key={item.id} className="pastureland-items-start gap-4 mb-4">
-                  <div className="flex gap-5">
-                    <div className="w-20 h-20">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        width={80}
-                        height={80}
-                        className="object-cover rounded-md w-full h-full"
-                      />
+              {cartItems.length === 0 ? (
+                <p className="text-gray-500 text-center">Your cart is empty.</p>
+              ) : (
+                <>
+                  {cartItems.map((item) => (
+                    <div
+                      key={item.id}
+                      className="pastureland-items-start gap-4 mb-4"
+                    >
+                      <div className="flex gap-5">
+                        <div className="w-20 h-20">
+                          <Image
+                            src={item.image || ShoeImage}  
+                            alt={item.name}
+                            width={80}
+                            height={80}
+                            className="object-cover rounded-md w-full h-full"
+                          />
+                        </div>
+                        <div className="flex flex-col">
+                          <h2 className="text-lg font-semibold">{item.name}</h2>
+                          <p className="text-[13px] text-gray-500">
+                            {item?.description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor "}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-[16px] font-semibold uppercase text-[#108F0D] mt-1">
+                          Expected By: {formattedDeliveryDate}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <h2 className="text-lg font-semibold">{item.name}</h2>
-                      <p className="text-[13px] text-gray-500">
-                        {item.description}
-                      </p>
+                  ))}
+
+                  <h2 className="text-xl font-bold">PRICE DETAILS</h2>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span>Amount ({cartItems.length} items)</span>
+                      <span>₹{subtotal.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between text-green-600">
+                      <span>Discount</span>
+                      <span>-₹{discount.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Delivery</span>
+                      <span className="text-green-600">Free</span>
+                    </div>
+                    <div className="flex justify-between font-bold text-lg border-t pt-2 mt-2">
+                      <span>GRAND TOTAL</span>
+                      <span>₹{total.toLocaleString()}</span>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <p className="text-[16px] font-semibold uppercase text-[#108F0D] mt-1">
-                      Expected By: Mon, Jan 01
-                    </p>
-                  </div>
-                </div>
-              ))}
 
-              <h2 className="text-xl font-bold">PRICE DETAILS</h2>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Amount ({cartItems.length} items)</span>
-                  <span>₹{subtotal.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between text-green-600">
-                  <span>Discount</span>
-                  <span>-₹{discount.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Delivery</span>
-                  <span className="text-green-600">Free</span>
-                </div>
-                <div className="flex justify-between font-bold text-lg border-t pt-2 mt-2">
-                  <span>GRAND TOTAL</span>
-                  <span>₹{total.toLocaleString()}</span>
-                </div>
-              </div>
-
-              <Button
-                onClick={onContinue}
-                className="w-full bg-[#689567] hover:bg-black transition duration-300 active:scale-90 cursor-pointer font-bold text-white"
-              >
-                CONTINUE
-              </Button>
+                  <Button
+                    onClick={onContinue}
+                    className="w-full bg-[#689567] hover:bg-black transition duration-300 active:scale-90 cursor-pointer font-bold text-white"
+                  >
+                    CONTINUE
+                  </Button>
+                </>
+              )}
             </Card>
           </div>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent>
+          <DialogContent className="bg-white min-w-[700px]">
             <AddressModal
               editAddress={editAddress}
               setEditAddress={setEditAddress}
