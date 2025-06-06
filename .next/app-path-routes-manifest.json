@@ -1,16 +1,16 @@
 {
   "/favicon.ico/route": "/favicon.ico",
-  "/about-us/page": "/about-us",
-  "/payment-page/page": "/payment-page",
   "/contact/page": "/contact",
   "/home/page": "/home",
-  "/login/page": "/login",
-  "/shop/[id]/[product_id]/page": "/shop/[id]/[product_id]",
-  "/services/page": "/services",
   "/cart/page": "/cart",
-  "/shop/page": "/shop",
+  "/shop/[id]/[product_id]/page": "/shop/[id]/[product_id]",
   "/_not-found/page": "/_not-found",
-  "/page": "/",
+  "/shop/page": "/shop",
+  "/login/page": "/login",
+  "/about-us/page": "/about-us",
+  "/payment-page/page": "/payment-page",
   "/signup/page": "/signup",
+  "/services/page": "/services",
+  "/page": "/",
   "/shop/[id]/page": "/shop/[id]"
 }

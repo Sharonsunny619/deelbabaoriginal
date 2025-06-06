@@ -1,16 +1,16 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/about-us/page": "app/about-us/page.js",
-  "/payment-page/page": "app/payment-page/page.js",
   "/contact/page": "app/contact/page.js",
   "/home/page": "app/home/page.js",
-  "/login/page": "app/login/page.js",
-  "/shop/[id]/[product_id]/page": "app/shop/[id]/[product_id]/page.js",
-  "/services/page": "app/services/page.js",
   "/cart/page": "app/cart/page.js",
-  "/shop/page": "app/shop/page.js",
+  "/shop/[id]/[product_id]/page": "app/shop/[id]/[product_id]/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/login/page": "app/login/page.js",
+  "/about-us/page": "app/about-us/page.js",
+  "/payment-page/page": "app/payment-page/page.js",
   "/signup/page": "app/signup/page.js",
+  "/services/page": "app/services/page.js",
+  "/page": "app/page.js",
   "/shop/[id]/page": "app/shop/[id]/page.js"
 }

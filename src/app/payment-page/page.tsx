@@ -1,10 +1,10 @@
-import Address from '@/components/payment_page/address'
+import Payment from '@/components/payment_page/payment'
 import React from 'react'
 
-export default  function PaymentPage() {
+export default function PaymentPage() {
   return (
     <div>
-      <Address/>
+      <Payment/>
     </div>
   )
 }

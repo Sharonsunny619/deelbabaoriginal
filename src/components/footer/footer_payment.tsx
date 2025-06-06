@@ -15,7 +15,7 @@ import Image from 'next/image';
 
 export default  function FooterPayment() {
   return (
-      <footer className={`bg-[#596F5B] text-white w-full fixed bottom-0`}>
+      <footer className={`bg-[#596F5B] text-white w-full  `}>
       <div className="max-w-10/12 mx-auto px-4 ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
           {/* Brand Section */}

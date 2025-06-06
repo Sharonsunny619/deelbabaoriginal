@@ -33,7 +33,7 @@ export default function RootLayout({
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             {PaymentPage ? "" :  <Header />}
-            <main className="flex-grow py-20">{children}</main>
+            <main className={`flex-grow ${PaymentPage?"py-5 px-16":"py-20"}`}>{children}</main>
             {pathname === "/login" || pathname === "/signup" || PaymentPage ? <FooterPayment/> : <Footer />}
           </PersistGate>
         </Provider>
