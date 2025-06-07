@@ -1,17 +1,8 @@
 import Nurse1 from "./images/nurse1.jpg";
 import Nurse2 from "./images/nurse2.jpg";
 import Nurse3 from "./images/nurse3.jpg";
+ 
 
- interface User {
-  id: number;
-  name: string;
-  image: string;
-  type: "service" | "banner";
-  rating?: number;
-  worksCompleted?: number;
-  location?: string;
-  kmAway?: number;
-}
 
  export const users: User[] = [
   {

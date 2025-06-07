@@ -190,7 +190,7 @@ export default function ServiceDetail({ service }: { service: any }) {
             </div>
 
             <button
-              onClick={()=> router.push("/service-payment-page")}
+              onClick={()=> router.push(`/service-payment-page?id=${service?.id}`)}
               className="mb-5 w-full transittion duration-300 active:scale-95 cursor-pointer mt-4 py-2   bg-[#689567] text-white rounded-md text-sm font-semibold hover:opacity-90"
             >
               Continue

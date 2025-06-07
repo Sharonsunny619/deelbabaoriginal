@@ -1,0 +1,5 @@
+
+interface ServiceAddressProps {
+   service: User
+}
+ 

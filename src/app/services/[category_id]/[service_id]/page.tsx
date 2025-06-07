@@ -8,7 +8,7 @@ export default function ScheduleCategoryPage() {
     const params = useParams();
     const categoryId = parseInt(params?.service_id as string);
     
-     const service = users.find((pro) => pro.id === categoryId);
+     const service = users?.find((pro) => pro.id === categoryId);
      console.log("service",service);
      
   return (

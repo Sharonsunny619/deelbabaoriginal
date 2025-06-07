@@ -1,26 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import Address from "@/components/payment_page/address";
-import { CreditCard, MapPin, ShoppingBag } from "lucide-react";
-import Deelbaba from "@/components/header/images/deelbaba";
+ import Deelbaba from "@/components/header/images/deelbaba";
 import { useRouter } from "next/navigation";
 import SelectPayment from "@/components/payment_page/select_payment";
-
-export default function ServicePayment() {
-  const [step, setStep] = useState<"BAG" | "ADDRESS" | "PAYMENT">("ADDRESS");
-  const [isHovered, setIsHovered] = useState(false);
+import ServiceAddress from "./service_address";
+ 
+export default function ServicePayment({service}:{service:User}) {
+   const [isHovered, setIsHovered] = useState(false);
 
   const router = useRouter();
-  const handleContinue = () => {
-    if (step === "ADDRESS") {
-      setStep("PAYMENT");
-    }
-  };
+ 
 
   return (
     <div>
       <div
-        className="flex items-center cursor-pointer"
+        className="flex items-center cursor-pointer "
         onClick={() => router.push("/home")}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -30,92 +25,9 @@ export default function ServicePayment() {
           colorB={isHovered ? "#689567" : "#A6E8A4"}
         />
       </div>
-      {/* Stepper */}
-      <div className="flex items-center justify-center mb-8">
-        <div className="flex items-center">
-          <div className="flex flex-col items-center">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center bg-transparent
-              }`}
-            >
-              <ShoppingBag
-                className={`w-5 h-5 ${
-                  step === "BAG" || step === "ADDRESS" || step === "PAYMENT"
-                    ? "text-[#689567]"
-                    : "text-[#969696]"
-                }`}
-              />
-            </div>
-            <span
-              className={`text-[14px] tracking-[2px] font-bold mt-1 ${
-                step === "BAG" || step === "ADDRESS" || step === "PAYMENT"
-                  ? "text-[#689567]"
-                  : "text-[#969696]"
-              }`}
-            >
-              BAG
-            </span>
-          </div>
-          <div
-            className={`border-b border-dashed w-20 ${
-              step === "ADDRESS" || step === "PAYMENT"
-                ? "border-[#689567]"
-                : "border-gray-300"
-            }`}
-          />
-        </div>
-        <div className="flex items-center">
-          <div className="flex flex-col items-center">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center bg-transparent`}
-            >
-              <MapPin
-                className={`w-5 h-5 ${
-                  step === "ADDRESS" || step === "PAYMENT"
-                    ? "text-[#689567]"
-                    : "text-[#969696]"
-                }`}
-              />
-            </div>
-            <span
-              className={`text-[14px] font-bold mt-1 tracking-[2px] ${
-                step === "ADDRESS" || step === "PAYMENT"
-                  ? "text-[#689567]"
-                  : "text-[#969696]"
-              }`}
-            >
-              ADDRESS
-            </span>
-          </div>
-          <div
-            className={`border-b border-dashed w-20 ${
-              step === "PAYMENT" ? "border-[#689567]" : "border-gray-300"
-            }`}
-          />
-        </div>
-        <div className="flex flex-col items-center">
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center bg-transparent`}
-          >
-            <CreditCard
-              className={`w-5 h-5 ${
-                step === "PAYMENT" ? "text-[#689567]" : "text-[#969696]"
-              }`}
-            />
-          </div>
-          <span
-            className={`text-[14px] tracking-[2px] font-semibold mt-1 ${
-              step === "PAYMENT" ? "text-[#689567]" : "text-[#969696]"
-            }`}
-          >
-            PAYMENT
-          </span>
-        </div>
-      </div>
+      
 
-      {/* Conditionally render Address or Payment component */}
-      {step === "ADDRESS" && <Address onContinue={handleContinue} />}
-      {step === "PAYMENT" && <SelectPayment />}
-    </div>
+       <ServiceAddress  service={service}/> 
+     </div>
   );
 }

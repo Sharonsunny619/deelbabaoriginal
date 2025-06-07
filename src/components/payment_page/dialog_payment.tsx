@@ -240,8 +240,7 @@ export default function Dialogpayment({
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-[470px] space-y-6">
-            {/* Pulsing circle with checkmark */}
-            <div className="relative flex items-center justify-center">
+             <div className="relative flex items-center justify-center">
               <div className="absolute h-[200px] w-[200px] rounded-full bg-[#f2f9f3] flex items-center justify-center z-0" />
               <div className="absolute h-[170px] w-[170px] rounded-full bg-[#d3e4d0] flex items-center justify-center z-10" />
               <div className="absolute h-[140px] w-[140px] rounded-full bg-[#a8cda9] flex items-center justify-center z-20" />
