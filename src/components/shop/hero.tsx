@@ -34,7 +34,7 @@ export default function Hero() {
             className="flex-grow px-8 py-3 text-sm focus:bg-transparent focus:outline-none rounded-l-full placeholder-white text-white bg-white/20"
           />
 
-          <div className="  hover:text-gray-300 bg-white/20 cursor-pointer border-white hover:bg-transparent  border-l-[1px] text-black px-5 py-[14px] flex items-center justify-center rounded-r-full">
+          <div className="  hover:text-gray-300 bg-white/20 cursor-pointer border-white hover:bg-transparent  border-l-[1px] text-white px-5 py-[14px] flex items-center justify-center rounded-r-full">
             <FaSearch />
           </div>
         </div>

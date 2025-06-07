@@ -1,9 +1,10 @@
+import Services from '@/components/services/services'
 import React from 'react'
 
-export default function Shop() {
+export default function ServicesPage() {
   return (
     <div>
-      i am Services
+      <Services/>
     </div>
   )
 }

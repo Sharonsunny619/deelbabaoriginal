@@ -18,8 +18,7 @@ export default function RootLayout({
   const pathname = usePathname();
   const PaymentPage = pathname.startsWith("/payment-page");
 
-  console.log("PaymentPage", PaymentPage);
-
+ 
   return (
     <html
       lang="en"

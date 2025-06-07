@@ -15,6 +15,23 @@
   "headers": [],
   "dynamicRoutes": [
     {
+      "page": "/services/[category_id]",
+      "regex": "^/services/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcategory_id": "nxtPcategory_id"
+      },
+      "namedRegex": "^/services/(?<nxtPcategory_id>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/services/[category_id]/[service_id]",
+      "regex": "^/services/([^/]+?)/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcategory_id": "nxtPcategory_id",
+        "nxtPservice_id": "nxtPservice_id"
+      },
+      "namedRegex": "^/services/(?<nxtPcategory_id>[^/]+?)/(?<nxtPservice_id>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/shop/[id]",
       "regex": "^/shop/([^/]+?)(?:/)?$",
       "routeKeys": {

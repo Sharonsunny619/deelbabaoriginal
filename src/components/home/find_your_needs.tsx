@@ -5,8 +5,9 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { professionals } from "./data";
+import { useRouter } from "next/navigation";
 
-export default function FindYourNeeds (){
+export default function FindYourNeeds() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -19,12 +20,16 @@ export default function FindYourNeeds (){
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
+  const router = useRouter();
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
     onSelect(); // set initial scroll buttons
   }, [emblaApi, onSelect]);
+
+  const handleCardClick = (pro) => {
+     router.push(`/services/${pro?.id}?from=home`);
+  };
 
   return (
     <div className="py-8 px-2 relative">
@@ -33,12 +38,13 @@ export default function FindYourNeeds (){
         <span className="flex-1 h-px bg-black"></span>
       </h2>
 
-      <div className="overflow-hidden px-6" ref={emblaRef}>
+      <div className="  px-6" ref={emblaRef}>
         <div className="flex gap-6">
           {professionals.map((pro, idx) => (
             <div
               key={idx}
-              className="min-w-[200px] bg-white rounded-3xl shadow p-6 flex flex-col items-center m-0.5"
+              onClick={() => handleCardClick(pro)}
+              className="min-w-[200px] bg-white  hover:scale-110 hover:shadow-lg rounded-3xl shadow p-6 flex flex-col items-center m-0.5"
             >
               <div className="w-32 h-32 relative overflow-hidden rounded-full mb-4">
                 <Image
@@ -79,6 +85,4 @@ export default function FindYourNeeds (){
       </button>
     </div>
   );
-};
-
-
+}

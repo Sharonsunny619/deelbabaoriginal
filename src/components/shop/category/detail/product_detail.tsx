@@ -58,8 +58,7 @@ const ProductDetailPage = () => {
   const productId = params.product_id;
   const productArray = params.id === "null" ? mainproducts : products;
   const product = productArray.find((p) => p.id === Number(productId));
-  console.log("products", productArray);
-
+ 
   if (!product) {
     notFound();
   }
