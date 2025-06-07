@@ -1,9 +1,8 @@
 "use client";
 
-import { useParams, notFound } from "next/navigation";
+import { useParams, notFound, useRouter } from "next/navigation";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Image from "next/image";
-import { IoHeartOutline } from "react-icons/io5";
 import { products } from "../data";
 import { products as mainproducts } from "../../data";
 
@@ -16,11 +15,45 @@ import Reviewpic from "./images/reviewpic.jpg";
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { reviews, sizes } from "./data";
+import { AdData, reviews, sizes } from "./data";
 import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import ProductCarousal from "./product_carousal";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/lib/store";
+import { addToCart } from "@/app/lib/cartSlice";
+
+const BannerCard = ({ item }) => {
+  return (
+    <div className="relative bg-white rounded-none shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] h-[200px] overflow-hidden">
+      {/* Background Image */}
+      {item.image}
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/10 "></div>
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col justify-end items-center p-6 z-10">
+        <button className="mt-4 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-[14px] px-4 py-1 hover:opacity-70 w-fit">
+          Buy Now
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const BannerSection = ({ items }) => {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {items.map((item) => (
+        <BannerCard key={item.id} item={item} />
+      ))}
+    </div>
+  );
+};
 
 const ProductDetailPage = () => {
   const params = useParams();
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const cartItems = useSelector((state: RootState) => state.cart.items);
 
   const productId = params.product_id;
   const productArray = params.id === "null" ? mainproducts : products;
@@ -31,8 +64,10 @@ const ProductDetailPage = () => {
     notFound();
   }
 
-  const { name, description, price, originalPrice, discount, rating, image } =
-    product;
+  // Move isInCart computation here, after product is defined
+  const isInCart = cartItems.some((item) => item.id === product.id);
+
+  const { name, description, price, originalPrice, discount, rating, image } = product;
 
   const [visibleCount, setVisibleCount] = useState(3);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -71,6 +106,7 @@ const ProductDetailPage = () => {
       </div>
     );
   };
+
   return (
     <section className="py-10 px-56 bg-[#fffff5]">
       <div className="flex gap-8 ">
@@ -111,8 +147,6 @@ const ProductDetailPage = () => {
                 />
               )}
             </div>
-
-             
           </div>
           <div className="flex  gap-2 justify-center bg-[#edeef1] -mt-5 z-50 py-2 border-t-[1px] border-gray-300">
             {[1, 2, 3].map((_, index) => (
@@ -133,12 +167,40 @@ const ProductDetailPage = () => {
           </div>
           {/* Buy Now and Add to Cart Buttons */}
           <div className="grid grid-cols-2 gap-4 mt-4">
-            <Button className="group font-[700] text-[14px]  relative h-13  overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95">
+            <Button onClick={()=> router.push("/payment-page")} className="group font-[700] text-[14px]  relative h-13  overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95">
               BUY NOW
             </Button>
-            <Button className="group font-[700] text-[14px]  relative h-13  overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95">
-              ADD TO CART
-            </Button>
+            {isInCart ? (
+              <Button
+                className="group font-[700] text-[14px]  relative h-13 overflow-hidden rounded-sm bg-[#505050] text-white w-full py-4 cursor-pointer transition active:scale-95"
+                onClick={() => router.push("/cart")}
+              >
+                GO TO CART
+              </Button>
+            ) : (
+
+               <Button
+                className="group font-[700] text-[14px]  relative h-13 overflow-hidden rounded-sm bg-[#689567] text-white w-full py-4 cursor-pointer transition active:scale-95"
+                onClick={() => {
+                  if (!selectedSize) {
+                    alert("Please select a size");
+                    return;
+                  }
+                  dispatch(
+                    addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: image.props.src.src,
+                      quantity: 1,
+                      size: selectedSize,
+                    })
+                  );
+                }}
+              >
+                ADD TO CART
+              </Button>
+            )}
           </div>
         </div>
 
@@ -380,6 +442,15 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </div>
+      <div key={`banner-${AdData[0].id}`} className="mt-5 shadow-lg col-span-5">
+        <div className="bg-white p-4 rounded-[22px]  ">
+          <h2 className="text-2xl font-semibold mb-4 text-start">
+            You Might Be Interested In
+          </h2>
+          <BannerSection items={AdData} />
+        </div>
+      </div>
+      <ProductCarousal />
     </section>
   );
 };

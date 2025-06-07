@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect } from "react";
 import Deelbaba from "./images/deelbaba";
@@ -14,6 +13,8 @@ import { useRouter, usePathname } from "next/navigation";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Input } from "../ui/input";
 import { profileMenuItems, tabs } from "./data";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/lib/store";
 
 export default function Header() {
   const [activeTab, setActiveTab] = useState("/");
@@ -23,18 +24,22 @@ export default function Header() {
     user: false,
   });
   const router = useRouter();
-  const pathname = usePathname();  
+  const pathname = usePathname();
+  const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  
- useEffect(() => {
-   const basePath = "/" + pathname.split("/")[1];  
-  const currentTab = tabs.find((tab) => tab.url === basePath);
-  if (currentTab) {
-    setActiveTab(currentTab.url);
-  } else {
-    setActiveTab("/");   
-  }
-}, [pathname]); 
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+  useEffect(() => {
+    const basePath = "/" + pathname.split("/")[1];
+    const currentTab = tabs.find((tab) => tab.url === basePath);
+    if (currentTab) {
+      setActiveTab(currentTab.url);
+    } else {
+      setActiveTab("/");
+    }
+  }, [pathname]);
 
   const handleTabClick = (tabUrl: string) => {
     setActiveTab(tabUrl);
@@ -66,7 +71,7 @@ export default function Header() {
             className={`rounded-full cursor-pointer px-6 py-2 font-semibold transition-colors duration-300 ${
               activeTab === tab.url
                 ? "hover:text-gray-300 bg-gradient-to-r from-black to-gray-500 text-white"
-                : "text-gray-800 bg-[#FFFEF4] hover:bg-[#FFFEF4] transition hover:scale-110 hover:text-gray-600"
+                : "text-gray-800 bg-[#FFFEF4] hover:bg-[#FFFEF4] transition hover:scale-108 hover:text-gray-600"
             }`}
           >
             {tab.title}
@@ -76,13 +81,21 @@ export default function Header() {
 
       {/* User Actions */}
       <div className="flex items-center gap-3">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="transition active:scale-95 cursor-pointer rounded-full"
-        >
-          <ShoppingCart className="h-5 w-5 text-gray-700" />
-        </Button>
+        <div className="relative">
+          <Button
+            onClick={() => router.push("/cart")}
+            variant="ghost"
+            size="icon"
+            className="transition active:scale-95 cursor-pointer rounded-full"
+          >
+            <ShoppingCart className="h-5 w-5 text-gray-700" />
+          </Button>
+          {cartItemCount > 0 && (
+            <div className="absolute top-0 right-0 bg-[#689567] text-white text-[11px] font-semibold rounded-full h-4 w-4 flex items-center justify-center">
+              {cartItemCount}
+            </div>
+          )}
+        </div>
 
         <Popover
           open={open.wallet}
@@ -157,7 +170,10 @@ export default function Header() {
           <PopoverContent className="w-[300px] bg-white rounded-3xl shadow-lg border-none p-0">
             <div className="flex flex-col gap-2">
               <div className="shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] rounded-t-2xl flex items-center justify-center">
-                <Button className="group font-[700] text-[14px] relative h-8 my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-9 py-4 cursor-pointer transition active:scale-95">
+                <Button
+                  onClick={() => router.push("/login")}
+                  className="group font-[700] text-[14px] relative h-8 my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-9 py-4 cursor-pointer transition active:scale-95"
+                >
                   Login/Register
                 </Button>
               </div>

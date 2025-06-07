@@ -68,7 +68,7 @@ const ProductCard = ({ product, shopcategory }) => {
         onClick={handleInteractiveClick}
         className="flex gap-2 items-center px-2 pb-2 mt-1"
       >
-        <button className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
+        <button onClick={()=> router.push("/payment-page")} className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
           Buy Now
         </button>
         <button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center">
@@ -88,7 +88,7 @@ const BannerCard = ({ item }) => {
       <div className="absolute inset-0 bg-black/10 "></div>
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end items-center p-6 z-10">
-        <button className="mt-4 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-[14px] px-4 py-1 hover:opacity-70 w-fit">
+        <button  className="mt-4 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-[14px] px-4 py-1 hover:opacity-70 w-fit">
           Buy Now
         </button>
       </div>
