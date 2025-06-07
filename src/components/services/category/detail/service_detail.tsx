@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { format, addDays } from "date-fns";
 import useEmblaCarousel from "embla-carousel-react";
+import { useRouter } from "next/navigation";
 
 export default function ServiceDetail({ service }: { service: any }) {
   const dates = Array.from({ length: 15 }, (_, i) => addDays(new Date(), i));
@@ -18,6 +19,7 @@ export default function ServiceDetail({ service }: { service: any }) {
     dragFree: true,
     containScroll: "trimSnaps",
   });
+  const router = useRouter();
   const [selectedIdx, setSelectedIdx] = useState(2);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const timeSlots = [
@@ -124,14 +126,12 @@ export default function ServiceDetail({ service }: { service: any }) {
       {/* Right Column */}
       <div className="w-full md:w-1/2 space-y-10 border-l-[1px] px-10">
         {/* Schedule Availability */}
-        <div className="rounded-xl shadow px-6 py-4 bg-white ">
-          <div className="flex items-center justify-between">
-            <h3 className="text-md font-semibold mb-4">
-              Schedule Availability
-            </h3>
+        <div className="rounded-xl shadow px-6 py-4 bg-[#FFFFF7] opacity-90">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-semibold ">Schedule Availability</h3>
             <Calendar className="h-5 w-5" strokeWidth={1.4} />
           </div>
-          <div className="relative mt-2 flex items-center justify-center">
+          <div className="relative mt-2 flex items-center justify-center mb-5">
             {/* Embla Viewport */}
             <div ref={emblaRef} className="embla overflow-hidden w-[500px]">
               <div className="embla__container flex gap-3 px-8">
@@ -172,32 +172,35 @@ export default function ServiceDetail({ service }: { service: any }) {
             </button>
           </div>
 
-         <div className="flex flex-col  mx-20">
-              <div className="grid grid-cols-3 gap-2 text-sm text-center mt-4 ">
-                {timeSlots.map((slot, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => setSelectedTime(slot)}
-                    className={`border rounded-full px-2 py-1 cursor-pointer transition ${
-                      selectedTime === slot
-                        ? "bg-[#689567] text-white border-[#689567]"
-                        : "border-gray-300 text-gray-700"
-                    }`}
-                  >
-                    {slot}
-                  </div>
-                ))}
-              </div>
-    
-              <button className="w-full transittion duration-300 active:scale-95 cursor-pointer mt-4 py-2   bg-[#689567] text-white rounded-md text-sm font-semibold hover:opacity-90">
-                Continue
-              </button>
-         </div>
+          <div className="flex flex-col  mx-20">
+            <div className="grid grid-cols-3 gap-4 mb-5 text-sm text-center mt-4 ">
+              {timeSlots.map((slot, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => setSelectedTime(slot)}
+                  className={`border rounded-full px-2 py-1 cursor-pointer transition ${
+                    selectedTime === slot
+                      ? "bg-[#689567] text-white border-[#689567]"
+                      : "border-gray-300 text-gray-700"
+                  }`}
+                >
+                  {slot}
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={()=> router.push("/service-payment-page")}
+              className="mb-5 w-full transittion duration-300 active:scale-95 cursor-pointer mt-4 py-2   bg-[#689567] text-white rounded-md text-sm font-semibold hover:opacity-90"
+            >
+              Continue
+            </button>
+          </div>
         </div>
 
         {/* Terms & Conditions */}
         <div className="text-sm text-gray-700 px-4">
-          <h3 className="font-semibold mb-2">Term & Conditions</h3>
+          <h3 className="font-semibold mb-2 text-xl">Term & Conditions</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.</li>
             <li>

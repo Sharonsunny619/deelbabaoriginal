@@ -105,6 +105,12 @@
       "namedRegex": "^/payment\\-page(?:/)?$"
     },
     {
+      "page": "/service-payment-page",
+      "regex": "^/service\\-payment\\-page(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/service\\-payment\\-page(?:/)?$"
+    },
+    {
       "page": "/services",
       "regex": "^/services(?:/)?$",
       "routeKeys": {},

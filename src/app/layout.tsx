@@ -17,6 +17,8 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
   const PaymentPage = pathname.startsWith("/payment-page");
+  const ServicePaymentPage = pathname.startsWith("/service-payment-page");
+
 
  
   return (
@@ -31,15 +33,15 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen">
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            {PaymentPage ? "" : <Header />}
+            {PaymentPage || ServicePaymentPage ? "" : <Header />}
             <main
-              className={`flex-grow ${PaymentPage ? "py-5 px-16" : "py-20"}`}
+              className={`flex-grow ${PaymentPage || ServicePaymentPage ? "py-5 px-16" : "py-20"}`}
             >
               {children}
             </main>
             {pathname === "/login" || pathname === "/signup" ?
             "":
-            PaymentPage ? (
+            PaymentPage || ServicePaymentPage ? (
               <FooterPayment />
             ) : (
               <Footer />
