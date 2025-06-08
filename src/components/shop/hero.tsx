@@ -34,7 +34,7 @@ export default function Hero() {
             className="flex-grow px-8 py-3 text-sm focus:bg-transparent focus:outline-none rounded-l-full placeholder-white text-white bg-white/20"
           />
 
-          <div className="  hover:text-gray-300 bg-white/20 cursor-pointer border-white hover:bg-transparent  border-l-[1px] text-black px-5 py-[14px] flex items-center justify-center rounded-r-full">
+          <div className="  hover:text-gray-300 bg-white/20 cursor-pointer border-white hover:bg-transparent  border-l-[1px] text-white px-5 py-[14px] flex items-center justify-center rounded-r-full">
             <FaSearch />
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function Hero() {
 
       {/* Content below search bar */}
 
-      <div className="z-30 text-left w-full max-w-full px-32 mx-auto">
+      <div className="z-30 text-left w-full max-w-full px-32 mx-auto hidden lg:block">
         <h1 className="text-4xl uppercase md:text-[40px] font-extrabold text-white ">
           End Of Season
         </h1>
@@ -55,7 +55,7 @@ export default function Hero() {
         </h1>
       </div>
 
-      <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30">
+      <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30 hidden lg:block">
         <h1 className="text-4xl uppercase md:text-[60px] font-extrabold text-white ">
           FLAT 50% OFF
         </h1>

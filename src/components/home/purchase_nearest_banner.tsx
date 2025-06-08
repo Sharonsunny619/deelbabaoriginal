@@ -12,18 +12,18 @@ export default function PurchaseNearestBanner() {
       {/* Green background with text */}
 
       <div
-        className="relative w-8/9 h-[400px] rounded-l-full flex justify-end items-center px-16 z-0 bg-gradient-to-r"
+        className="relative w-8/9 h-[400px] rounded-l-full flex justify-end items-center px-4 lg:px-16 z-0 bg-gradient-to-r"
         style={{
           backgroundImage: "linear-gradient(to right, #ADC5AD, #e5ecdc)",
         }}
       >
         {/* Text content */}
-        <div className="text-right text-white max-w-2xl">
-          <h2 className="text-5xl font-semibold text-black mb-10">
+        <div className="text-right text-white  md:max-w-2xl">
+          <h2 className="text-2xl md:text-5xl font-semibold text-black mb-10">
             <span className="text-[#689567]">Purchase</span> Everything From
             Your <span className="text-[#689567]">Nearest Store</span>
           </h2>
-          <p className="text-sm text-[#949393] mt-4 font-semibold">
+          <p className="text-[12px] md:text-sm text-[#949393] mt-4 font-semibold">
             Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
             <br /> Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore <br />{" "}
             Magna Aliqua
@@ -38,7 +38,7 @@ export default function PurchaseNearestBanner() {
       </div>
 
       {/* Image projecting from the top */}
-      <div className="absolute left-60 -top-69 w-[40%] h-[750px] z-10">
+      <div className="absolute left-60 -top-68 w-[40%] h-[710px] z-10 lg:block hidden">
         <Image
           src={PurchaseFromNearestStore}
           alt="Purchase"

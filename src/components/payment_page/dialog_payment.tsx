@@ -8,6 +8,7 @@ import QRcode from "./images/images.png";
 import Deelbaba from "../header/images/deelbaba";
 import { RootState } from "@/app/lib/store";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface CartItem {
   id: number;
@@ -37,7 +38,7 @@ export default function Dialogpayment({
   const [netBanking, setNetBanking] = useState<string>("");
   const [saveCard, setSaveCard] = useState<boolean>(false);
   const [isPayCLicked, setisPayCLicked] = useState(false);
-
+  const router = useRouter();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
   const subtotal = cartItems.reduce(
@@ -238,48 +239,48 @@ export default function Dialogpayment({
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-[450px] space-y-6">
-            {/* Pulsing circle with checkmark */}
-            <div className="relative w-[100px] h-[100px]">
-                            <div className="absolute inset-0 rounded-full bg-[#f2f9f3]  scale-[2.2]"></div>
-
-              <div className="absolute inset-0 rounded-full bg-[#d3e4d0]  scale-[2.2]"></div>
-              <div className="absolute inset-0 rounded-full bg-[#a8cda9]  scale-[1.6]"></div>
-              <div className="absolute inset-0 rounded-full bg-[#81B480]  scale-[1.1] "></div>
-              <div className="relative z-10 w-full h-full flex items-center justify-center rounded-full bg-[#81B480]">
-                <Check className="h-[100px] w-[100px] text-white" strokeWidth={3}/>
+          <div className="flex flex-col items-center justify-center h-[470px] space-y-6">
+             <div className="relative flex items-center justify-center">
+              <div className="absolute h-[200px] w-[200px] rounded-full bg-[#f2f9f3] flex items-center justify-center z-0" />
+              <div className="absolute h-[170px] w-[170px] rounded-full bg-[#d3e4d0] flex items-center justify-center z-10" />
+              <div className="absolute h-[140px] w-[140px] rounded-full bg-[#a8cda9] flex items-center justify-center z-20" />
+              <div className="relative z-30 h-[110px] w-[110px] rounded-full bg-[#81B480] flex items-center justify-center">
+                <Check
+                  className="h-[80px] w-[80px] text-white"
+                  strokeWidth={3}
+                />
               </div>
             </div>
 
-            {/* Text */}
-            <p className="text-lg font-semibold text-[#212121]">
+            <p className="text-lg font-semibold text-[#212121] mt-10">
               Payment Successful
             </p>
 
-            {/* Button */}
-            <button className="px-6 py-2 bg-green-400 text-white rounded-full text-sm hover:bg-green-500 transition">
+            <button
+              onClick={() => router.push("/home")}
+              className="px-6 py-2 mt-3 bg-[#81B480] text-white rounded-full text-sm hover:bg-black transition duration-300 active:scale-90 cursor-pointer"
+            >
               Back To Home
             </button>
           </div>
         )}
 
-{
-  isPayCLicked===false &&
-        <div className="mt-10 flex justify-between items-center bg-[#689567] text-white px-4 py-3">
-          <div className="flex flex-col">
-            <span className="font-semibold text-lg">
-              ₹{total.toLocaleString()}
-            </span>
-            <p className="text-[11px] -mt-[6px]">View Details</p>
+        {isPayCLicked === false && (
+          <div className="mt-10 flex justify-between items-center bg-[#689567] text-white px-4 py-3">
+            <div className="flex flex-col">
+              <span className="font-semibold text-lg">
+                ₹{total.toLocaleString()}
+              </span>
+              <p className="text-[11px] -mt-[6px]">View Details</p>
+            </div>
+            <Button
+              onClick={() => setisPayCLicked(true)}
+              className="bg-white text-[#000] rounded-full hover:bg-gray-100 font-bold w-[200px] transition duration-300 active:scale-95 cursor-pointer"
+            >
+              Pay Now
+            </Button>
           </div>
-          <Button
-            onClick={() => setisPayCLicked(true)}
-            className="bg-white text-[#000] rounded-full hover:bg-gray-100 font-bold w-[200px] transition duration-300 active:scale-95 cursor-pointer"
-          >
-            Pay Now
-          </Button>
-        </div>
-}
+        )}
       </DialogContent>
     </Dialog>
   );

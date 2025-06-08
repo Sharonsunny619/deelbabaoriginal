@@ -43,7 +43,9 @@ interface Address {
 
 interface AddressProps {
   onContinue: () => void;
+  service: User
 }
+
 
 interface DialogpaymentAProps {
   open: boolean;

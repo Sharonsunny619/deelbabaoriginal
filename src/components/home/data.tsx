@@ -11,8 +11,6 @@ import Plumber from "./images/plumber.png";
 import Nurse from "./images/nurse.jpg";
 import Product from "./images/product.png";
 import Product2 from "../shop/images/productglass.jpg";
- 
-
 
 export const serviceProviders = [
   {
@@ -396,18 +394,30 @@ export const banners = [
 ];
 
 export const professionals = [
-  { name: "Nurse", image: Nurse.src },
-  { name: "Driver", image: Driver.src },
-  { name: "Plumber", image: Plumber.src },
-  { name: "Nurse", image: Nurse.src },
-  { name: "Driver", image: Driver.src },
-  { name: "Plumber", image: Plumber.src },
-  { name: "Nurse", image: Nurse.src },
-  { name: "Driver", image: Driver.src },
-  { name: "Plumber", image: Plumber.src },
-  { name: "Nurse", image: Nurse.src },
-  { name: "Driver", image: Driver.src },
-  { name: "Plumber", image: Plumber.src },
+  { id: 1, name: "Nurse", image: Nurse.src },
+  { id: 2, name: "Driver", image: Driver.src },
+  { id: 3, name: "Plumber", image: Plumber.src },
+  { id: 4, name: "Electrician", image: Nurse.src },
+  { id: 5, name: "Carpenter", image: Plumber.src },
+  { id: 6, name: "Cook", image: Driver.src },
+  { id: 7, name: "Babysitter", image: Plumber.src },
+  { id: 8, name: "Cleaner", image: Driver.src },
+  { id: 9, name: "Mechanic", image: Driver.src },
+  { id: 10, name: "Maid", image: Plumber.src },
+  { id: 11, name: "Security Guard", image: Driver.src },
+  { id: 12, name: "Painter", image: Driver.src },
+  { id: 13, name: "Nurse", image: Nurse.src },
+  { id: 13, name: "Driver", image: Driver.src },
+  { id: 14, name: "Plumber", image: Plumber.src },
+  { id: 15, name: "Electrician", image: Nurse.src },
+  { id: 16, name: "Carpenter", image: Plumber.src },
+  { id: 17, name: "Cook", image: Driver.src },
+  { id: 18, name: "Babysitter", image: Plumber.src },
+  { id: 19, name: "Cleaner", image: Driver.src },
+  { id: 20, name: "Mechanic", image: Driver.src },
+  { id: 21, name: "Maid", image: Plumber.src },
+  { id: 22, name: "Security Guard", image: Driver.src },
+  { id: 23, name: "Painter", image: Driver.src },
 ];
 
 export const products = [

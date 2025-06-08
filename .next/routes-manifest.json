@@ -15,6 +15,23 @@
   "headers": [],
   "dynamicRoutes": [
     {
+      "page": "/services/[category_id]",
+      "regex": "^/services/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcategory_id": "nxtPcategory_id"
+      },
+      "namedRegex": "^/services/(?<nxtPcategory_id>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/services/[category_id]/[service_id]",
+      "regex": "^/services/([^/]+?)/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcategory_id": "nxtPcategory_id",
+        "nxtPservice_id": "nxtPservice_id"
+      },
+      "namedRegex": "^/services/(?<nxtPcategory_id>[^/]+?)/(?<nxtPservice_id>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/shop/[id]",
       "regex": "^/shop/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -88,6 +105,12 @@
       "namedRegex": "^/payment\\-page(?:/)?$"
     },
     {
+      "page": "/service-payment-page",
+      "regex": "^/service\\-payment\\-page(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/service\\-payment\\-page(?:/)?$"
+    },
+    {
       "page": "/services",
       "regex": "^/services(?:/)?$",
       "routeKeys": {},
@@ -104,6 +127,18 @@
       "regex": "^/signup(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/signup(?:/)?$"
+    },
+    {
+      "page": "/wishlist",
+      "regex": "^/wishlist(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wishlist(?:/)?$"
+    },
+    {
+      "page": "/workers-registration",
+      "regex": "^/workers\\-registration(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/workers\\-registration(?:/)?$"
     }
   ],
   "dataRoutes": [],

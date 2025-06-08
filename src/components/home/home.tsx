@@ -10,7 +10,7 @@ import FindYourNeeds from "./find_your_needs";
 import FeaturedProducts from "./featured_product";
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <StatsSection />
       <GetServiceSection />
