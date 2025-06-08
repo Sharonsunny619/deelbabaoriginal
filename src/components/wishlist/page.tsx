@@ -53,36 +53,36 @@ export default function Wishlist() {
           alt="Glass"
           width={40}
           height={40}
-          className="absolute top-30 -right-3"
+          className="absolute top-40  md:top-30 right-6 md:-right-3"
         />
         <Image
           src={Pant}
           alt="Pant"
           width={40}
           height={40}
-          className="absolute top-48 -left-5 -translate-x-1/2"
+          className="absolute top-60 md:top-48 left-11 md:-left-5 -translate-x-1/2"
         />
         <Image
           src={Shoe}
           alt="Shoe"
           width={40}
           height={40}
-          className="absolute   top-30 -left-4 "
+          className="absolute top-40  md:top-30 left-6 md:-left-4 "
         />
         <Image
           src={Lipstick}
           alt="Lipstick"
           width={40}
           height={40}
-          className="absolute top-48 -right-10"
+          className="absolute top-60 md:top-48 right-6 md:-right-10"
         />
       </div>
 
-      <p className="text-[36px] font-bold mt-15">
+      <p className=" text-[22px] md:text-[36px] font-bold mt-15">
         {" "}
         Your Deelbaba Cart is Empty!
       </p>
-      <p className="font-[510] text-[18px] text-[#212121]">
+      <p className="font-[510] text-[15px] text-center md:text-[18px] text-[#212121]">
         Add Something To Your Bag And Enjoy Your Shoping
       </p>
 

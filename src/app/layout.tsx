@@ -37,7 +37,7 @@ export default function RootLayout({
           <PersistGate loading={null} persistor={persistor}>
             {PaymentPage || ServicePaymentPage || WorkersRegistrationPage ? "" : <Header />}
             <main
-              className={`flex-grow ${PaymentPage || ServicePaymentPage || WorkersRegistrationPage ? "py-5 px-16" : "py-20"}`}
+              className={`flex-grow ${PaymentPage || ServicePaymentPage || WorkersRegistrationPage ? "py-5 px-4 md:px-16" : "py-20"}`}
             >
               {children}
             </main>

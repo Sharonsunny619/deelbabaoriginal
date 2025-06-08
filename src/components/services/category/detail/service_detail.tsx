@@ -13,7 +13,7 @@ import { format, addDays } from "date-fns";
 import useEmblaCarousel from "embla-carousel-react";
 import { useRouter } from "next/navigation";
 
-export default function ServiceDetail({ service }: { service: any }) {
+export default function ServiceDetail({ service }) {
   const dates = Array.from({ length: 15 }, (_, i) => addDays(new Date(), i));
   const [emblaRef, emblaApi] = useEmblaCarousel({
     dragFree: true,
@@ -21,7 +21,7 @@ export default function ServiceDetail({ service }: { service: any }) {
   });
   const router = useRouter();
   const [selectedIdx, setSelectedIdx] = useState(2);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const timeSlots = [
     "9am - 11am",
     "11am - 1pm",
@@ -40,12 +40,12 @@ export default function ServiceDetail({ service }: { service: any }) {
   }, [emblaApi]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-10 px-64 py-10">
+    <div className="flex flex-col md:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64 py-6 sm:py-8 md:py-10">
       {/* Left Column */}
       <div className="w-full md:w-1/2">
         {/* Profile */}
         <div className="flex flex-col items-center">
-          <div className="w-28 h-28 rounded-full overflow-hidden border">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border">
             <Image
               src={service.image}
               alt={service.name}
@@ -54,28 +54,28 @@ export default function ServiceDetail({ service }: { service: any }) {
               className="object-cover"
             />
           </div>
-          <h2 className="text-xl font-semibold mt-4">{service.name}</h2>
-          <p className="text-sm text-[#212121] font-[600]">Nurse</p>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mt-4">{service.name}</h2>
+          <p className="text-xs sm:text-sm text-[#212121] font-[600]">Nurse</p>
           <div className="flex items-center gap-1 text-yellow-500 mt-2">
             {[...Array(Math.round(service.rating))].map((_, i) => (
-              <FaStar key={i} />
+              <FaStar key={i} size={12}  />
             ))}
           </div>
-          <p className="text-sm text-gray-600 mt-2">{service.location}</p>
-          <p className="text-sm text-gray-600">{service.kmAway} Km Away</p>
-          <p className="text-sm text-gray-600">
+          <p className="text-xs sm:text-sm text-gray-600 mt-2">{service.location}</p>
+          <p className="text-xs sm:text-sm text-gray-600">{service.kmAway} Km Away</p>
+          <p className="text-xs sm:text-sm text-gray-600">
             {service.worksCompleted} Work Completed
           </p>
         </div>
 
         {/* Work Photos */}
-        <div className="mt-10 px-4">
-          <h3 className="font-semibold text-md mb-2">Work Photos</h3>
+        <div className="mt-6 sm:mt-8 md:mt-10 px-2 sm:px-4">
+          <h3 className="font-semibold text-sm sm:text-md md:text-lg mb-2">Work Photos</h3>
           <div className="flex gap-2 overflow-x-auto">
             {[1, 2, 3, 4, 5].map((id) => (
               <div
                 key={id}
-                className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden flex-shrink-0"
               >
                 <Image
                   src={workImage}
@@ -90,32 +90,32 @@ export default function ServiceDetail({ service }: { service: any }) {
         </div>
 
         {/* Reviews */}
-        <div className="mt-10 px-4">
-          <h3 className="font-semibold text-lg mb-2">
+        <div className="mt-6 sm:mt-8 md:mt-10 px-2 sm:px-4">
+          <h3 className="font-semibold text-md sm:text-lg md:text-xl mb-2">
             Rating & Review
-            <span className="text-[#525252] text-sm">
+            <span className="text-[#525252] text-xs sm:text-sm">
               {" "}
               (29 Ratings And 12 Reviews)
             </span>
           </h3>
           {[1, 2, 3].map((id) => (
             <div key={id} className="mb-4">
-              <p className="font-semibold">User {id}</p>
+              <p className="font-semibold text-sm sm:text-base">User {id}</p>
               <div className="flex gap-1 text-yellow-500 mb-1">
                 {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} size={14} />
+                  <FaStar key={i} size={12} className="sm:size-[14px]" />
                 ))}
               </div>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs sm:text-sm text-gray-500">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
               <div className="flex gap-3 items-end justify-end">
                 <div className="cursor-pointer active:scale-110">
-                  <ThumbsUp className="h-3 w-3" strokeWidth={1} />
+                  <ThumbsUp className="h-3 w-3 sm:h-4 sm:w-4" strokeWidth={1} />
                 </div>
                 <div className="cursor-pointer active:scale-110">
-                  <ThumbsDown className="h-3 w-3" strokeWidth={1} />
+                  <ThumbsDown className="h-3 w-3 sm:h-4 sm:w-4" strokeWidth={1} />
                 </div>
               </div>
             </div>
@@ -124,22 +124,22 @@ export default function ServiceDetail({ service }: { service: any }) {
       </div>
 
       {/* Right Column */}
-      <div className="w-full md:w-1/2 space-y-10 border-l-[1px] px-10">
+      <div className="w-full md:w-1/2 space-y-6 md:space-y-10 md:border-l-[1px] md:px-6 lg:px-10">
         {/* Schedule Availability */}
-        <div className="rounded-xl shadow px-6 py-4 bg-[#FFFFF7] opacity-90">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold ">Schedule Availability</h3>
-            <Calendar className="h-5 w-5" strokeWidth={1.4} />
+        <div className="rounded-xl shadow px-4 sm:px-6 py-4 bg-[#FFFFF7] opacity-90">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">Schedule Availability</h3>
+            <Calendar className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.4} />
           </div>
           <div className="relative mt-2 flex items-center justify-center mb-5">
             {/* Embla Viewport */}
-            <div ref={emblaRef} className="embla overflow-hidden w-[500px]">
-              <div className="embla__container flex gap-3 px-8">
+            <div ref={emblaRef} className="embla overflow-hidden w-full max-w-[500px]">
+              <div className="embla__container flex gap-3 px-4 sm:px-8">
                 {dates.map((date, idx) => (
                   <div key={idx} className="flex-[0_0_auto]">
                     <div
                       onClick={() => setSelectedIdx(idx)}
-                      className={`w-[60px] py-2 text-center rounded-lg cursor-pointer text-sm transition ${
+                      className={`w-[60px] py-2 text-center rounded-lg cursor-pointer text-xs sm:text-sm transition ${
                         idx === selectedIdx
                           ? "bg-[#689567] text-white font-medium"
                           : "bg-[#689567] text-white opacity-50"
@@ -148,7 +148,7 @@ export default function ServiceDetail({ service }: { service: any }) {
                       <div className="leading-tight font-bold">
                         {format(date, "MMM")}
                       </div>
-                      <div className="text-lg">{format(date, "d")}</div>
+                      <div className="text-base sm:text-lg">{format(date, "d")}</div>
                     </div>
                   </div>
                 ))}
@@ -172,8 +172,8 @@ export default function ServiceDetail({ service }: { service: any }) {
             </button>
           </div>
 
-          <div className="flex flex-col  mx-20">
-            <div className="grid grid-cols-3 gap-4 mb-5 text-sm text-center mt-4 ">
+          <div className="flex flex-col mx-auto max-w-[400px]">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 mb-5 text-xs sm:text-sm text-center mt-4">
               {timeSlots.map((slot, idx) => (
                 <div
                   key={idx}
@@ -190,8 +190,8 @@ export default function ServiceDetail({ service }: { service: any }) {
             </div>
 
             <button
-              onClick={()=> router.push(`/service-payment-page?id=${service?.id}`)}
-              className="mb-5 w-full transittion duration-300 active:scale-95 cursor-pointer mt-4 py-2   bg-[#689567] text-white rounded-md text-sm font-semibold hover:opacity-90"
+              onClick={() => router.push(`/service-payment-page?id=${service?.id}`)}
+              className="mb-5 w-full transition duration-300 active:scale-95 cursor-pointer mt-4 py-2 bg-[#689567] text-white rounded-md text-sm font-semibold hover:opacity-90"
             >
               Continue
             </button>
@@ -199,8 +199,8 @@ export default function ServiceDetail({ service }: { service: any }) {
         </div>
 
         {/* Terms & Conditions */}
-        <div className="text-sm text-gray-700 px-4">
-          <h3 className="font-semibold mb-2 text-xl">Term & Conditions</h3>
+        <div className="text-xs sm:text-sm text-gray-700 px-2 sm:px-4">
+          <h3 className="font-semibold mb-2 text-lg sm:text-xl md:text-2xl">Term & Conditions</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.</li>
             <li>

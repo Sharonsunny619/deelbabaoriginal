@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ShoppingCart } from "lucide-react";
@@ -14,37 +15,37 @@ const ProductCard = ({ product, shopcategory }) => {
   const router = useRouter();
 
   const handleCardClick = () => {
-    router.push(`/shop/${shopcategory?.id}/${product?.id}`);  
+    router.push(`/shop/${shopcategory?.id}/${product?.id}`);
   };
 
   const handleInteractiveClick = (e) => {
-    e.stopPropagation();  
+    e.stopPropagation();
   };
 
   return (
     <div
       onClick={handleCardClick}
-      className="flex flex-col items-center justify-center bg-white hover:scale-107 hover:shadow-2xl rounded-[22px] w-[260px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]"
+      className="flex flex-col items-center justify-center bg-white hover:scale-105 hover:shadow-2xl rounded-[22px] w-full max-w-[260px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[260px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] transition-transform duration-300"
     >
-      <div className="relative inline-block w-full h-[280px] overflow-hidden rounded-t-[22px]">
-        {image}
-        <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
+      <div className="relative inline-block w-full h-[200px] sm:h-[240px] md:h-[260px] lg:h-[280px] overflow-hidden rounded-t-[22px]">
+        <img src={image.props.src.src} alt={name} className="w-full h-full object-cover" />
+        <span className="absolute top-[12px] left-[12px] flex justify-between items-center w-[calc(100%-24px)]">
           <div className="bg-white flex items-center rounded px-2 py-[2px] shadow">
-            <span className="font-bold m-0">{rating}</span>
-            <FaStar className="ml-2 text-yellow-500 text-xs" />
+            <span className="font-bold text-sm">{rating}</span>
+            <FaStar className="ml-1 text-yellow-500 text-xs" />
           </div>
           <div
             onClick={handleInteractiveClick}
-            className="w-[40px] h-[40px] rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] relative"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-[0px_0px_14px_5px_#0000001A] relative"
           >
             {isFavorite ? (
               <IoIosHeart
-                className="absolute left-[10px] top-[11px] text-[#3c693b] w-5 h-5 cursor-pointer"
+                className="absolute left-[25%] top-[25%] text-[#3c693b] w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
                 onClick={() => setIsFavorite(false)}
               />
             ) : (
               <IoIosHeartEmpty
-                className="absolute left-[10px] top-[11px] text-[#3c693b] w-5 h-5 cursor-pointer"
+                className="absolute left-[25%] top-[25%] text-[#3c693b] w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
                 onClick={() => setIsFavorite(true)}
               />
             )}
@@ -52,12 +53,10 @@ const ProductCard = ({ product, shopcategory }) => {
         </span>
       </div>
 
-      <div className="flex flex-col gap-[2px] text-left px-0">
-        <span className="text-lg font-medium text-gray-500 mb-0">{name}</span>
-        <span className="text-sm text-gray-500">
-          Lorem Ipsum Dolor Sit Amet
-        </span>
-        <div className="flex gap-0.5 mt-1 text-sm text-left">
+      <div className="flex flex-col gap-1 px-3 sm:px-4 py-2">
+        <span className="text-base sm:text-lg font-medium text-gray-500 truncate">{name}</span>
+        <span className="text-xs sm:text-sm text-gray-500 truncate">Lorem Ipsum Dolor Sit Amet</span>
+        <div className="flex gap-1 mt-1 text-xs sm:text-sm text-left">
           <b className="text-black font-semibold">₹{price}</b>
           <s className="text-[#616161]">₹{originalPrice}</s>
           <span className="text-red-600">{discount}% OFF</span>
@@ -66,13 +65,18 @@ const ProductCard = ({ product, shopcategory }) => {
 
       <div
         onClick={handleInteractiveClick}
-        className="flex gap-2 items-center px-2 pb-2 mt-1"
+        className="flex gap-2 items-center px-3 sm:px-4 pb-3 mt-1 w-full"
       >
-        <button onClick={()=> router.push("/payment-page")} className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-12 py-1 hover:opacity-70">
+        <button
+          onClick={() => router.push("/payment-page")}
+          className="bg-[#689567] text-xs sm:text-sm cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-6 sm:px-8 py-1.5 hover:opacity-70 flex-1"
+        >
           Buy Now
         </button>
-        <button className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[30px] h-[30px] p-1.5 flex items-center justify-center">
-          <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
+        <button
+          className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-8 h-8 sm:w-10 sm:h-10 p-1.5 flex items-center justify-center"
+        >
+          <ShoppingCart className="text-[#689567] w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
     </div>
@@ -81,14 +85,13 @@ const ProductCard = ({ product, shopcategory }) => {
 
 const BannerCard = ({ item }) => {
   return (
-    <div className="relative bg-white rounded-none shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] h-[200px] overflow-hidden">
-      {/* Background Image */}
-      {item.image}
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/10 "></div>
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-end items-center p-6 z-10">
-        <button  className="mt-4 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-[14px] px-4 py-1 hover:opacity-70 w-fit">
+    <div className="relative bg-white rounded-[22px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] h-[150px] sm:h-[180px] md:h-[200px] overflow-hidden">
+      <img src={item.image.props.src.src} alt={item.name} className="absolute inset-0 w-full h-full object-cover rounded-[22px]" />
+      <div className="absolute inset-0 bg-black/30 rounded-[22px]"></div>
+      <div className="absolute inset-0 flex flex-col justify-end items-start p-4 sm:p-6 z-10">
+        <button
+          className="bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] text-xs sm:text-sm px-4 py-1 hover:opacity-70 w-fit"
+        >
           Buy Now
         </button>
       </div>
@@ -98,7 +101,7 @@ const BannerCard = ({ item }) => {
 
 const BannerSection = ({ items }) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
       {items.map((item) => (
         <BannerCard key={item.id} item={item} />
       ))}
@@ -113,16 +116,13 @@ export default function ProductsGrid({
   tabcategory: Category;
   shopcategory: CategoryType;
 }) {
-  // Track the position in the grid
   let gridItems = [];
   let currentIndex = 0;
 
-  // Iterate through products to build the grid
   while (currentIndex < products.length) {
     const item = products[currentIndex];
 
     if (item.type === "product") {
-      // Add product card
       gridItems.push(
         <div key={item.id} className="flex justify-center">
           <ProductCard product={item} shopcategory={shopcategory} />
@@ -130,7 +130,6 @@ export default function ProductsGrid({
       );
       currentIndex++;
     } else if (item.type === "banner") {
-      // Collect all consecutive banner items
       const bannerItems = [];
       while (
         currentIndex < products.length &&
@@ -139,11 +138,10 @@ export default function ProductsGrid({
         bannerItems.push(products[currentIndex]);
         currentIndex++;
       }
-      // Add banner section spanning 5 columns
       gridItems.push(
-        <div key={`banner-${bannerItems[0].id}`} className="col-span-5">
-          <div className="bg-white p-4 rounded-[22px]  ">
-            <h2 className="text-2xl font-semibold mb-4 text-start">
+        <div key={`banner-${bannerItems[0].id}`} className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5">
+          <div className="bg-white p-3 sm:p-4 rounded-[22px]">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-start">
               You Might Be Interested In
             </h2>
             <BannerSection items={bannerItems} />
@@ -154,8 +152,10 @@ export default function ProductsGrid({
   }
 
   return (
-    <section className="py-10 px-72">
-      <div className="grid grid-cols-5 gap-15 ">{gridItems}</div>
+    <section className="py-6 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-48">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
+        {gridItems}
+      </div>
     </section>
   );
 }
