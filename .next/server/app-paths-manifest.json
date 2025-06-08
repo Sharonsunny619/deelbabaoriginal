@@ -1,4 +1,21 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/cart/page": "app/cart/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/home/page": "app/home/page.js",
+  "/about-us/page": "app/about-us/page.js",
+  "/shop/[id]/[product_id]/page": "app/shop/[id]/[product_id]/page.js",
+  "/service-payment-page/page": "app/service-payment-page/page.js",
+  "/services/page": "app/services/page.js",
+  "/services/[category_id]/[service_id]/page": "app/services/[category_id]/[service_id]/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/services/[category_id]/page": "app/services/[category_id]/page.js",
+  "/payment-page/page": "app/payment-page/page.js",
   "/workers-registration/page": "app/workers-registration/page.js",
-  "/home/page": "app/home/page.js"
+  "/wishlist/page": "app/wishlist/page.js",
+  "/shop/[id]/page": "app/shop/[id]/page.js"
 }

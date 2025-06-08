@@ -1,0 +1,21 @@
+{
+  "/favicon.ico/route": "/favicon.ico",
+  "/_not-found/page": "/_not-found",
+  "/cart/page": "/cart",
+  "/login/page": "/login",
+  "/page": "/",
+  "/contact/page": "/contact",
+  "/home/page": "/home",
+  "/about-us/page": "/about-us",
+  "/shop/[id]/[product_id]/page": "/shop/[id]/[product_id]",
+  "/service-payment-page/page": "/service-payment-page",
+  "/services/page": "/services",
+  "/services/[category_id]/[service_id]/page": "/services/[category_id]/[service_id]",
+  "/shop/page": "/shop",
+  "/signup/page": "/signup",
+  "/services/[category_id]/page": "/services/[category_id]",
+  "/payment-page/page": "/payment-page",
+  "/workers-registration/page": "/workers-registration",
+  "/wishlist/page": "/wishlist",
+  "/shop/[id]/page": "/shop/[id]"
+}

@@ -118,8 +118,8 @@ const BannerCard = ({ item }) => {
 
 export default function ProductsGrid() {
   return (
-    <section className="py-10 px-72 ">
-      <div className="grid grid-cols-5 gap-11 ">
+    <section className="py-10 lg:px-72 ">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-11 ">
         {products.map((item, index) => (
           <div
             key={index}
