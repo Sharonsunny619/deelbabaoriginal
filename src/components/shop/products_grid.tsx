@@ -1,5 +1,3 @@
- 
-
 "use client";
 
 import React, { useState } from "react";
@@ -11,6 +9,7 @@ import { products } from "./data";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/app/lib/cartSlice";
+import Image from "next/image";
 
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -30,10 +29,18 @@ const ProductCard = ({ product }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="hover:scale-105 hover:shadow-2xl flex flex-col items-center justify-center bg-white rounded-[22px] w-full max-w-[260px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[290px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] transition-transform duration-300"
+      className="hover:scale-105 hover:shadow-2xl flex flex-col items-center justify-center bg-white rounded-[22px] w-full max-w-[260px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[290px] shadow-[0px_0px_17px_4px_rgba(0,0,0,0.1)] transition-transform duration-300"
     >
       <div className="relative inline-block w-full h-[200px] sm:h-[240px] md:h-[260px] lg:h-[280px] overflow-hidden rounded-t-[22px]">
-        <img src={image.props.src.src} alt={name} className="w-full h-full object-cover" />
+        <div className="relative w-full h-[280px]">
+          <Image
+            src={image.props.src.src}
+            alt={"image"}
+            fill
+            className="object-cover  "
+            priority
+          />
+        </div>{" "}
         <span className="absolute top-[12px] left-[12px] flex justify-between items-center w-[calc(100%-24px)]">
           <div className="bg-white flex items-center rounded px-2 py-[2px] shadow">
             <span className="font-bold text-sm">{rating}</span>
@@ -58,9 +65,13 @@ const ProductCard = ({ product }) => {
         </span>
       </div>
 
-      <div className="flex flex-col gap-1 px-3 sm:px-4 py-2">
-        <span className="text-base sm:text-lg font-medium text-gray-500 truncate">{name}</span>
-        <span className="text-xs sm:text-sm text-gray-500 truncate">Lorem Ipsum Dolor Sit Amet</span>
+      <div className="flex flex-col gap-0 items-start px-3 sm:px-4 pb-3 w-full">
+        <span className="text-base sm:text-lg font-[510] text-black truncate mt-2">
+          {name}
+        </span>
+        <span className="text-xs sm:text-sm text-[#919191] truncate font-[510px]  ">
+          Lorem Ipsum Dolor Sit Amet
+        </span>
         <div className="flex gap-1 mt-1 text-xs sm:text-sm text-left">
           <b className="text-black font-semibold">₹{price}</b>
           <s className="text-[#616161]">₹{originalPrice}</s>
@@ -70,11 +81,11 @@ const ProductCard = ({ product }) => {
 
       <div
         onClick={handleInteractiveClick}
-        className="flex gap-2 items-center px-3 sm:px-4 pb-3 mt-1 w-full"
+        className="flex gap-2 items-center px-3 sm:px-4 pb-3   w-full"
       >
         <button
           onClick={() => router.push("/payment-page")}
-          className="bg-[#689567] whitespace-nowrap text-xs sm:text-sm cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-6 sm:px-8 py-1.5 hover:opacity-70 flex-1"
+          className="bg-[#689567] whitespace-nowrap text-xs sm:text-sm cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[13px] px-6 sm:px-8 py-1.5 hover:opacity-70 flex-1"
         >
           Buy Now
         </button>
@@ -91,7 +102,7 @@ const ProductCard = ({ product }) => {
               })
             );
           }}
-          className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-8 h-8 sm:w-10 sm:h-10 p-1.5 flex items-center justify-center"
+          className="border-[1.5px] hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-8 h-8 sm:w-8 sm:h-8 p-1.5 flex items-center justify-center"
         >
           <ShoppingCart className="text-[#689567] w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
@@ -122,8 +133,9 @@ const BannerCard = ({ item }) => {
 
 export default function ProductsGrid() {
   return (
-    <section className="py-6 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-40">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
+    <section className="py-6 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-24">
+      <div className="grid grid-cols-1 min-[500px]:grid-cols-2 min-[770px]:grid-cols-3 min-[1100px]:grid-cols-4 min-[1300px]:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
+        {" "}
         {products.map((item, index) => (
           <div
             key={index}

@@ -11,7 +11,7 @@ export default function NearestStores () {
   const autoplay = useRef(
     Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true })
   );
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
     autoplay.current,
   ]);
  const router=useRouter()
@@ -26,12 +26,12 @@ export default function NearestStores () {
       </h2>
 
       <div className="relative">
-        <div className="overflow-hidden px-6" ref={emblaRef}>
-          <div className="flex gap-4">
+        <div className="  px-6" ref={emblaRef}>
+           <div className="flex gap-[28px] ">
             {stores.map((store, index) => (
               <div
                 key={index}
-                className="min-w-[220px] rounded-2xl shadow p-4 text-center flex-shrink-0"
+                className="min-w-[230px] rounded-2xl shadow-[0px_0px_17px_4px_rgba(0,0,0,0.1)] p-4 text-center flex-shrink-0"
                 style={{
                   background:
                     "radial-gradient(208.91% 208.91% at 71.52% -22.74%, #FFFFFF 0%, #DFF5A2 100%)",
@@ -47,7 +47,7 @@ export default function NearestStores () {
                   {store.offer}
                 </p>
                 <p className="text-[12px] text-gray-500 mt-4 ">{store.valid}</p>
-                <button onClick={()=>router.push("/shop")} className="mt-1 w-full bg-[#8DC38C] cursor-pointer hover:bg-black duration-300 active:scale-95 text-white py-2 rounded-[15px] transition flex items-center justify-center gap-2">
+                <button onClick={()=>router.push("/shop")} className="mt-1 w-full bg-[#8DC38C] cursor-pointer hover:bg-black duration-300 active:scale-95 text-white py-2 rounded-[12px]  transition flex items-center justify-center gap-2">
                   Visit Store
                   <ArrowRight className="h-4 w-5" />
                 </button>

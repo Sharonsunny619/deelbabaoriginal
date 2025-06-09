@@ -5,10 +5,13 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { deals } from "./data";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-export default function BestDeals()  {
+export default function BestDeals() {
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [autoplay.current]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
+    autoplay.current,
+  ]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
@@ -41,14 +44,24 @@ export default function BestDeals()  {
             {deals.map((deal, index) => (
               <div
                 key={index}
-                className="relative min-w-[200px] h-[280px] rounded-[30px] overflow-hidden shadow-md flex-shrink-0 mx-2"
+                className="relative snap-x snap-mandatory scroll-smooth min-w-[230px] h-[280px] rounded-[30px] overflow-hidden shadow-md flex-shrink-0 mx-3"
               >
-                {deal.img}
+                <div className="relative w-full h-[280px]">
+                  <Image
+                    src={deal.img}
+                    alt="Purchase"
+                    fill
+                    className="object-cover rounded-[30px]"
+                    priority
+                  />
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-transparent to-transparent px-4 py-5">
                   <h3 className="text-white font-semibold text-lg text-center">
                     {deal.title}
                   </h3>
-                  <p className="text-[#00B407] font-bold text-center">{deal.discount}</p>
+                  <p className="text-[#00B407] font-bold text-center">
+                    {deal.discount}
+                  </p>
                 </div>
               </div>
             ))}
@@ -56,24 +69,21 @@ export default function BestDeals()  {
         </div>
 
         {/* Buttons */}
-       <button
-        onClick={scrollPrev}
-        disabled={!canScrollPrev}
-        className="absolute left-0 top-1/2 w-8 h-10 cursor-pointer transition duration-300 active:scale-95 -translate-y-1/2 bg-white/60 p-2 rounded-r-md shadow hover:bg-gray-100 z-10 flex items-center justify-center"
-      >
-        <ArrowLeft className="h-5 w-5" />
-      </button>
-      <button
-        onClick={scrollNext}
-        disabled={!canScrollNext}
-        className="absolute right-0 top-1/2 w-8 h-10 cursor-pointer transition duration-300 active:scale-95 -translate-y-1/2 bg-white/60 p-2 rounded-l-md shadow hover:bg-gray-100 z-10 flex items-center justify-center"
-      >
-        <ArrowRight className="h-5 w-5" />
-      </button>
-      
+        <button
+          onClick={scrollPrev}
+          disabled={!canScrollPrev}
+          className="absolute left-0 top-1/2 w-8 h-10 cursor-pointer transition duration-300 active:scale-95 -translate-y-1/2 bg-white/60 p-2 rounded-r-md shadow hover:bg-gray-100 z-10 flex items-center justify-center"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={scrollNext}
+          disabled={!canScrollNext}
+          className="absolute right-0 top-1/2 w-8 h-10 cursor-pointer transition duration-300 active:scale-95 -translate-y-1/2 bg-white/60 p-2 rounded-l-md shadow hover:bg-gray-100 z-10 flex items-center justify-center"
+        >
+          <ArrowRight className="h-5 w-5" />
+        </button>
       </div>
     </div>
   );
-};
-
-
+}

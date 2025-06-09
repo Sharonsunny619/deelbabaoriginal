@@ -28,7 +28,7 @@ export default function FindYourNeeds() {
   }, [emblaApi, onSelect]);
 
   const handleCardClick = (pro) => {
-     router.push(`/services/${pro?.id}?from=home`);
+    router.push(`/services/${pro?.id}?from=home`);
   };
 
   return (
@@ -39,22 +39,23 @@ export default function FindYourNeeds() {
       </h2>
 
       <div className="  px-6" ref={emblaRef}>
-        <div className="flex gap-6">
+        <div className="flex  gap-6">
           {professionals.map((pro, idx) => (
             <div
               key={idx}
               onClick={() => handleCardClick(pro)}
-              className="min-w-[200px] bg-white  hover:scale-110 hover:shadow-lg rounded-3xl shadow p-6 flex flex-col items-center m-0.5"
+              className="min-w-[220px] bg-white  border-none shadow-[0px_0px_17px_4px_rgba(0,0,0,0.1)] hover:scale-110 hover:shadow-lg rounded-4xl shadow p-8 flex flex-col items-center m-0.5"
             >
-              <div className="w-32 h-32 relative overflow-hidden rounded-full mb-4">
+              <div className="relative w-full h-[150px]">
                 <Image
                   src={pro.image}
                   alt={pro.name}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  className="object-cover rounded-full"
+                  priority
                 />
               </div>
-              <p className="text-lg font-medium mb-4 text-black">{pro.name}</p>
+              <p className="text-lg   mb-4 text-black font-bold">{pro.name}</p>
               <div className="flex gap-4">
                 <button className="px-6 py-1  cursor-pointer transition duration-300 active:scale-90 bg-[#689567] text-white hover:bg-black font-semibold text-[14px] rounded-md">
                   Work

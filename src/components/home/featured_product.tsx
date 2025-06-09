@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/app/lib/cartSlice";
+import Image from "next/image";
 
 export default function FeaturedProducts() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
@@ -43,10 +44,10 @@ export default function FeaturedProducts() {
           <ArrowRight className="h-5 w-5" />
         </button>
 
-        <div className="overflow-x-hidden py-2 bg-[#fffef4]" ref={emblaRef}>
+        <div className="  py-2 bg-[#fffef4]" ref={emblaRef}>
           <div className="flex">
             {products.map((product, index) => (
-              <div className="min-w-[260px] mr-4" key={index}>
+              <div className="min-w-[250px] mx-5" key={index}>
                 <ProductCard product={product} />
               </div>
             ))}
@@ -74,10 +75,18 @@ const ProductCard = ({ product }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="hover:scale-104 hover:shadow-2xl flex flex-col items-center  justify-center bg-white rounded-[22px] w-[250px] shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)]"
+      className="hover:scale-104 hover:shadow-2xl flex flex-col items-center  justify-center bg-white rounded-[23px]  shadow-[0px_0px_20px_5px_rgba(0,0,0,0.1)]"
     >
       <div className="relative inline-block w-full">
-        <img src={image} alt={name} className="w-full block rounded-t-[22px]" />
+        <div className="relative w-full h-[270px]">
+          <Image
+            src={image}
+            alt="Purchase"
+            fill
+            className="object-cover rounded-[20px]"
+            priority
+          />
+        </div>{" "}
         <span className="absolute top-[12px] left-[20px] flex justify-between items-center w-[80%]">
           <div className="bg-white flex items-center rounded px-2 py-[2px] shadow">
             <span className="font-bold m-0">{rating}</span>
@@ -102,9 +111,9 @@ const ProductCard = ({ product }) => {
         </span>
       </div>
 
-      <div className="flex flex-col gap-[2px] text-left px-0">
-        <span className="text-lg font-medium text-gray-500 mb-0">{name}</span>
-        <span className="text-sm text-gray-500">
+    <div className="flex flex-col gap-0 items-start px-3 sm:px-4   w-full">
+        <span className="text-lg font-medium text-black mb-0 mt-2">{name}</span>
+        <span className="text-[14px]   text-[#919191] truncate font-[510px]">
           Lorem Ipsum Dolor Sit Amet
         </span>
         <div className="flex gap-0.5 mt-1 text-sm text-left">
@@ -116,11 +125,12 @@ const ProductCard = ({ product }) => {
 
       <div
         onClick={handleInteractiveClick}
-        className="flex gap-2 items-center px-2 pb-2"
+        className="flex gap-7 items-center px-2 pb-2 mt-2 mb-1"
       >
         <button
-        onClick={()=> router.push("/payment-page")}
-        className="bg-[#689567]  cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-9 py-2 hover:opacity-70">
+          onClick={() => router.push("/payment-page")}
+          className="bg-[#689567] text-[14px] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[13px] px-12 py-[5px] hover:opacity-70"
+        >
           Buy Now
         </button>
         <Button
@@ -136,7 +146,7 @@ const ProductCard = ({ product }) => {
               })
             );
           }}
-          className="border-[1.5px]  hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[37px] h-[37px] p-1.5 flex items-center justify-center"
+          className="border-[1.5px]  hover:bg-white bg-white border-[#689567] cursor-pointer transition duration-300 active:scale-95 rounded-[15px] w-[31px] h-[31px] p-1.5 flex items-center justify-center"
         >
           <ShoppingCart className="text-[#689567] w-[22px] h-[22px]" />
         </Button>

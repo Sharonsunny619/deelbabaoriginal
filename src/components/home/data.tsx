@@ -220,145 +220,57 @@ export const deals = [
   {
     title: "Winter Wears",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal1}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal1.src
   },
   {
     title: "Mobiles",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal2}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal2.src
   },
   {
     title: "Sports Shoes",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal3}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal3.src
   },
   {
     title: "Health & Beauty",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal1}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+     img:BestDeal1.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal2}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal2.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal3}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal3.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal1}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+     img:BestDeal1.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal2}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal2.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal3}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal3.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal1}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+     img:BestDeal1.src
   },
   {
     title: "Digital Watches",
     discount: "Min. 40% Off",
-    img: (
-      <Image
-        src={BestDeal2}
-        alt="Purchase"
-        fill
-        className="object-fit"
-        priority
-      />
-    ),
+    img:BestDeal2.src
   },
 ];
 
