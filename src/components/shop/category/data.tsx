@@ -22,14 +22,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Bosch}
-        alt="Bosch"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Bosch.src
   },
   {
     id: 2,
@@ -40,14 +33,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Motul}
-        alt="Motul"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Motul.src
   },
   {
     id: 3,
@@ -58,14 +44,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Wheel}
-        alt="Wheel"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Wheel.src
   },
   {
     id: 4,
@@ -76,14 +55,7 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={OilPump}
-        alt="OilPump"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: OilPump.src
   },
   {
     id: 5,
@@ -94,14 +66,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Bosch}
-        alt="Bosch"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Bosch.src
   },
    
    {
@@ -113,14 +78,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Bosch}
-        alt="Bosch"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Bosch.src
   },
   {
     id: 7,
@@ -131,14 +89,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Motul}
-        alt="Motul"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Motul.src
   },
   {
     id: 8,
@@ -149,14 +100,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Wheel}
-        alt="Wheel"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Wheel.src
   },
    {
     id: 9,
@@ -167,14 +111,7 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={OilPump}
-        alt="OilPump"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: OilPump.src
   },
   {
     id: 10,
@@ -185,56 +122,27 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Bosch}
-        alt="Bosch"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Bosch.src
   },
   {
     id: 11,
     name: "Adidas Outlet",
     discount: 50,
-    image: (
-       <Image
-        src={Flat50}
-        alt="Flat50"
-           fill={true}
-        className="object-contain"
-      />
-    
-    ),
+    image: Flat50.src,
     type: "banner",
   },
     {
     id: 12,
     name: "Adidas Outlet",
     discount: 50,
-    image: (
-       <Image
-        src={Flat50}
-        alt="Flat50"
-           fill={true}
-        className="object-contain"
-      />
-    ),
+    image: Flat50.src,
     type: "banner",
   },
     {
     id: 13,
     name: "Adidas Outlet",
     discount: 50,
-    image: (
-       <Image
-        src={Flat50}
-        alt="Flat50"
-           fill={true}
-        className="object-contain rounded-none"
-      />
-    ),
+    image:Flat50.src,
     type: "banner",
   },
   {
@@ -246,14 +154,7 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={OilPump}
-        alt="OilPump"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: OilPump.src
   },
    {
     id: 15,
@@ -264,14 +165,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Bosch}
-        alt="Bosch"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Bosch.src
   },
   {
     id: 16,
@@ -282,14 +176,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Motul}
-        alt="Motul"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Motul.src
   },
   {
     id: 17,
@@ -300,14 +187,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Wheel}
-        alt="Wheel"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Wheel.src
   },
   {
     id: 18,
@@ -318,14 +198,7 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={OilPump}
-        alt="OilPump"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: OilPump.src
   },
     {
     id: 19,
@@ -336,14 +209,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={Motul}
-        alt="Motul"
-           fill={true}
-        className="object-contain rounded-[22px]"
-      />
-    ),
+    image: Motul.src
   },
 ];
 

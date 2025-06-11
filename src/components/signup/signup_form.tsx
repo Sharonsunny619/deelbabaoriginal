@@ -19,12 +19,12 @@ export default function SignUpForm() {
             <p className="text-[30px] -mt-16 md:-mt-28 text-white">Sign Up</p>
           </div>
           <div className="flex flex-col items-center justify-center my-5 lg:my-10">
-            <div className="group relative">
+                     <div className="group relative">
               <label
                 htmlFor="id"
-                className="origin-center text-muted-foreground/70 group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:text-foreground absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 cursor-text px-1 text-sm transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:left-1/2 group-focus-within:-translate-x-1/2 group-focus-within:cursor-default group-focus-within:text-xs group-focus-within:font-medium has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:left-1/2 has-[+input:not(:placeholder-shown)]:-translate-x-1/2 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-xs has-[+input:not(:placeholder-shown)]:font-medium"
+                className="origin-center text-muted-foreground/70 group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:text-foreground absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 cursor-text px-1 text-[12px] md:text-[14px] transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:left-1/2 group-focus-within:-translate-x-1/2 group-focus-within:cursor-default group-focus-within:text-[12px] md:group-focus-within:text-[14px] group-focus-within:font-medium has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:left-1/2 has-[+input:not(:placeholder-shown)]:-translate-x-1/2 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-[12px] md:has-[+input:not(:placeholder-shown)]:text-[14px] has-[+input:not(:placeholder-shown)]:font-medium"
               >
-                <span className="bg-white inline-flex whitespace-nowrap  ">
+                <span className="bg-white inline-flex whitespace-nowrap">
                   Enter Email Or Phone Number
                 </span>
               </label>
@@ -32,7 +32,7 @@ export default function SignUpForm() {
                 id="id"
                 type="email"
                 placeholder=" "
-                className="h-10 w-full md:w-[400px]"
+                className="h-10 w-full md:w-[400px] placeholder:text-[12px] md:placeholder:text-[14px]"
               />
             </div>
             <Button className="group font-[700] text-[14px]  relative h-9 my-5 lg:my-7 mx-7 overflow-hidden rounded-sm bg-[#689567] text-white px-16 md:px-41 py-4 cursor-pointer transition active:scale-95">

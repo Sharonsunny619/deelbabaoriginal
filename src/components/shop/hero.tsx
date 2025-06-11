@@ -40,28 +40,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Content below search bar */}
+ 
+      
 
-      <div className="z-30 text-left w-full max-w-full px-32 mx-auto hidden lg:block">
-        <h1 className="text-4xl uppercase md:text-[40px] font-extrabold text-white ">
-          End Of Season
-        </h1>
-        <h1 className="text-4xl uppercase md:text-[130px] font-extrabold text-white mb-2">
-          SALE
-        </h1>
-
-        <h1 className="text-4xl uppercase md:text-[38px] font-extrabold text-white ">
-          This Week Only
-        </h1>
-      </div>
-
-      <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30 hidden lg:block">
-        <h1 className="text-4xl uppercase md:text-[60px] font-extrabold text-white ">
-          FLAT 50% OFF
-        </h1>
-        <h1 className="text-4xl text-center  md:text-[30px] font-extrabold text-white mb-2">
-          On Your First <br /> Purcherse
-        </h1>
+      <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30   lg:block">
+         
 
         <Button className="cursor-pointer gap-6  active:scale-95 bg-white hover:text-white text-[#890203] hover:bg-[#890203]   py-3 h-11 rounded-xl font-semibold transition duration-200">
           <div className="flex items-center justify-center gap-5 px-5">

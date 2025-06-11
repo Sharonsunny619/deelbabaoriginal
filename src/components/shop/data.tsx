@@ -36,14 +36,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={dress}
-        alt="dress"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: dress.src
   },
   {
     id: 2,
@@ -54,14 +47,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={glass}
-        alt="glass"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: glass.src
   },
   {
     id: 3,
@@ -72,14 +58,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={watch}
-        alt="watch"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: watch.src
   },
   {
     id: 4,
@@ -90,14 +69,7 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={lipstick}
-        alt="lipstick"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: lipstick.src
   },
   {
     id: 5,
@@ -108,27 +80,13 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={dress}
-        alt="dress"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: dress.src
   },
    {
     id: 6,
     name: "Adidas Outlet",
     discount: 50,
-    image: (
-       <Image
-        src={productbanner2}
-        alt="productbanner2"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: productbanner2.src,
     type: "banner",
   },
    {
@@ -140,14 +98,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={dress}
-        alt="dress"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: dress.src
   },
   {
     id: 8,
@@ -158,14 +109,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={glass}
-        alt="glass"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: glass.src
   },
   {
     id: 9,
@@ -176,14 +120,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={watch}
-        alt="watch"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: watch.src
   },
   {
     id: 10,
@@ -194,27 +131,13 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={lipstick}
-        alt="lipstick"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: lipstick.src
   },
   {
     id: 11,
     name: "Nike Sale",
     discount: 40,
-    image: (
-       <Image
-        src={productbanner1}
-        alt="productbanner1"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image:productbanner1.src,
     type: "banner",
   },
    {
@@ -226,14 +149,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={dress}
-        alt="dress"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: dress.src
   },
   {
     id: 13,
@@ -244,14 +160,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={glass}
-        alt="glass"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: glass.src
   },
   {
     id: 14,
@@ -262,14 +171,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={watch}
-        alt="watch"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: watch.src
   },
   {
     id: 15,
@@ -280,14 +182,7 @@ export const products = [
     discount: 20,
     rating: 4.8,
      type: "product",
-    image: (
-      <Image
-        src={lipstick}
-        alt="lipstick"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: lipstick.src
   },
     {
     id: 16,
@@ -298,14 +193,7 @@ export const products = [
     discount: 20,
     rating: 4.5,
      type: "product",
-    image: (
-      <Image
-        src={glass}
-        alt="glass"
-           fill={true}
-        className="object-cover rounded-[22px]"
-      />
-    ),
+    image: glass.src
   },
 ];
 

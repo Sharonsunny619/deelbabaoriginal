@@ -47,23 +47,11 @@ export default function Hero() {
 
       {/* Content below search bar */}
 
-    <div className="z-30 text-left w-full max-w-full px-32 mx-auto ">
-  <h2 className="lg:block hidden text-white font-semibold text-[18px] tracking-wider mb-5 uppercase">
-    Opportunities Waiting For You
-  </h2>
-  <h1 className="lg:block hidden text-4xl md:text-[70px] font-extrabold text-white mb-7">
-    One Solution For
-    <br />
-    All Your Needs
-  </h1>
-  <p className="lg:block hidden text-white  font-semibold mb-16 ">
-    You Can Get Services, Products And Everything <br/> From A Single Window
-  </p>
-  <Button className="cursor-pointer lg:relative lg:ml-10 absolute bottom-10 right-10  active:scale-95 bg-[#689567] text-white px-24  md:px-40 py-3 h-10 rounded-xl font-semibold transition duration-200">
-    Explore
-  </Button>
-</div>
-
+      <div className="z-30 text-left w-full max-w-full px-32 mx-auto ">
+        <Button className="cursor-pointer lg:relative lg:ml-10 absolute bottom-30 lg:-bottom-30 right-10  active:scale-95 bg-[#689567] text-white px-24  md:px-40 py-3 h-10 rounded-xl font-semibold transition duration-200">
+          Explore
+        </Button>
+      </div>
     </section>
   );
 }

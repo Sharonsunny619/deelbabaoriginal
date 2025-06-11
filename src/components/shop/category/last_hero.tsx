@@ -14,8 +14,11 @@ import Appliances from "./images/appliances.webp";
 
 import { CategoryType } from "./interface";
 
-export default function CategoryLastHero({ category }: { category: CategoryType }) {
-
+export default function CategoryLastHero({
+  category,
+}: {
+  category: CategoryType;
+}) {
   let bannerImage = Fashion;
 
   switch (category.name.toLowerCase()) {
@@ -59,11 +62,7 @@ export default function CategoryLastHero({ category }: { category: CategoryType 
       {/* Gradient overlay on top of white overlay */}
       <div className="absolute inset-0 z-20 pointer-events-none" />
 
-     
-
-      {/* Content below search bar */}
-
-      <div className="absolute bottom-18 right-100 z-30">
+      <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30 mt-30  lg:block">
         <Button className="cursor-pointer gap-6 active:scale-95 bg-white/50  e text-[#fff] hover:bg-[#fff] hover:text-[#000] py-3 h-13 rounded-xl font-semibold transition duration-200">
           <div className="flex items-center justify-center gap-5 px-5">
             Explore

@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect } from "react";
 import Deelbaba from "./images/deelbaba";
@@ -58,7 +57,7 @@ export default function Header() {
 
   return (
     <header className="fixed z-50 bg-[#fffef4] h-[80px] top-0 w-full px-4 xl:px-16 py-3 shadow-md flex items-center justify-between">
-       <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3">
         <div
           className="flex items-center cursor-pointer md:block hidden"
           onClick={() => router.push("/home")}
@@ -84,7 +83,7 @@ export default function Header() {
         </Button>
       </div>
 
-       <div
+      <div
         className={`fixed inset-0 bg-black/20 z-40 lg:hidden transition-opacity duration-300 ${
           open.sidebar ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
@@ -95,8 +94,8 @@ export default function Header() {
           open.sidebar ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex flex-col p-4   ">
-           <div
+        <div className="flex flex-col p-4">
+          <div
             className="flex items-center cursor-pointer mb-6 md:hidden"
             onClick={() => {
               router.push("/home");
@@ -175,7 +174,7 @@ export default function Header() {
         </div>
       </div>
 
-       <nav className="hidden lg:flex gap-2 border-[1px] border-[#000000] rounded-full p-1">
+      <nav className="hidden lg:flex gap-2 border-[1px] border-[#000000] rounded-full p-1">
         {tabs.map((tab) => (
           <Button
             key={tab.title}
@@ -222,7 +221,7 @@ export default function Header() {
             </Button>
           </PopoverTrigger>
           {open.wallet && <div className="fixed inset-0 bg-black/20 z-40" />}
-          <PopoverContent className="relative w-[330px] p-0 bg-white rounded-3xl shadow-lg border-none">
+          <PopoverContent className="w-[300px] md:w-[330px] max-w-[330px] mx-auto p-0 bg-white rounded-3xl shadow-lg border-none">
             <div className="flex flex-col items-center text-center gap-4 z-10">
               <div className="rounded-t-2xl shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] gap-5 w-full py-7 flex items-center justify-center">
                 <Wallet className="h-8 w-8 text-[#689567]" />
@@ -245,7 +244,7 @@ export default function Header() {
                   placeholder="Enter Amount"
                   className="w-full border border-[#AECBAE] bg-green-50 rounded-md px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400"
                 />
-                <p className="text-[9px] text-gray-400 mt-1">
+                <p className="text-[10px] text-gray-400 mt-1">
                   Payment can be made comfortably without fear of bank errors
                 </p>
               </div>
@@ -279,8 +278,7 @@ export default function Header() {
             </Button>
           </PopoverTrigger>
           {open.user && <div className="fixed inset-0 bg-black/20 z-40" />}
-
-          <PopoverContent className="w-[300px] bg-white rounded-3xl shadow-lg border-none p-0">
+          <PopoverContent className="w-[300px] md:w-[330px] max-w-[330px] mx-auto bg-white rounded-3xl shadow-lg border-none p-0">
             <div className="flex flex-col gap-2">
               <div className="shadow-[0_4px_5px_-1px_rgba(0,0,0,0.1)] rounded-t-2xl flex items-center justify-center">
                 <Button

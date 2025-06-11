@@ -109,12 +109,12 @@ const ProductDetailPage = () => {
          <div className="flex flex-col gap-3 sm:gap-4 w-full lg:w-1/2">
           <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[489px] overflow-hidden rounded-[10px] bg-[#edeef1]">
             <Image
-              src={image.props.src.src}
-              alt={image.props.alt}
+              src={image }
+              alt={name }
               fill
               className="object-contain rounded-[10px]"
               placeholder="blur"
-              blurDataURL={image.props.src.blurDataURL}
+              blurDataURL={image}
             />
             <div className="absolute -top-1 -left-2 text-[#edeef1] text-xs font-semibold px-2 py-1 rounded">
               <Image
@@ -151,12 +151,12 @@ const ProductDetailPage = () => {
                 className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[5px] overflow-hidden cursor-pointer bg-[#edeef1] border-none hover:scale-110 transition-transform"
               >
                 <Image
-                  src={image.props.src.src}
+                  src={image }
                   alt={`${name} thumbnail ${index + 1}`}
                   fill
                   className="object-contain rounded-[5px]"
                   placeholder="blur"
-                  blurDataURL={image.props.src.blurDataURL}
+                  blurDataURL={image }
                 />
               </div>
             ))}
@@ -189,7 +189,7 @@ const ProductDetailPage = () => {
                       id: product.id,
                       name: product.name,
                       price: product.price,
-                      image: image.props.src.src,
+                      image: image  ,
                       quantity: 1,
                       size: selectedSize,
                     })

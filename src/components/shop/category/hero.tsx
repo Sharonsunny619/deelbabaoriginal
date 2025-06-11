@@ -76,7 +76,8 @@ export default function CategoryHero({ category }: { category: CategoryType }) {
 
       {/* Content below search bar */}
 
-      <div className="absolute bottom-18 right-100 z-30">
+       
+      <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30   lg:block">
         <Button className="cursor-pointer gap-6 active:scale-95 bg-white hover:text-white text-[#000] hover:bg-[#000] py-3 h-13 rounded-xl font-semibold transition duration-200">
           <div className="flex items-center justify-center gap-5 px-5">
             Explore
