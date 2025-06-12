@@ -7,8 +7,7 @@ import { users } from "./data";
 import PromoCarousel from "@/components/home/promo_carousal";
 import { useRouter } from "next/navigation";
 
-// Define types for clarity
-interface User {
+ interface User {
   id: number;
   name: string;
   image: string;
@@ -19,13 +18,11 @@ interface User {
   kmAway?: number;
 }
 
-// ServiceCard component for individual service items
-const ServiceCard = ({ user, category }: { user: User; category: any }) => {
+ const ServiceCard = ({ user, category }: { user: User; category: any }) => {
   const router = useRouter();
   return (
     <div className="rounded-[20px] overflow-hidden shadow-xl border bg-[#F4F7EC] flex flex-col items-center h-96 sm:h-[420px] md:h-[450px] w-full max-w-sm mx-auto">
-      {/* Top Green Header */}
-      <div className="relative bg-[#689567] h-24 sm:h-28 md:h-[120px] w-full flex items-center justify-center text-white font-semibold text-base sm:text-lg">
+       <div className="relative bg-[#689567] h-24 sm:h-28 md:h-[120px] w-full flex items-center justify-center text-white font-semibold text-base sm:text-lg">
         <div className="flex items-center justify-center flex-col mt-2">
           <p className="relative z-10 -mb-4 sm:-mb-5 opacity-75">Nurse</p>
           <p className="relative z-10 text-3xl sm:text-4xl md:text-[52px] opacity-15">Deelbaba</p>
@@ -45,8 +42,7 @@ const ServiceCard = ({ user, category }: { user: User; category: any }) => {
       <div className="mt-2 text-center px-3 sm:px-4 pb-4 flex flex-col items-center flex-1">
         <h3 className="font-semibold text-black text-sm sm:text-base md:text-lg">{user.name}</h3>
 
-        {/* Dynamic stars based on rating */}
-        <div className="flex items-center justify-center gap-1 text-yellow-500 my-1 sm:my-2">
+         <div className="flex items-center justify-center gap-1 text-yellow-500 my-1 sm:my-2">
           {[...Array(5)].map((_, i) =>
             i < Math.round(user.rating || 0) ? (
               <FaStar key={i} size={12} className="sm:h-4 sm:w-4" />

@@ -46,8 +46,7 @@ export default function CategoryLastHero({
 
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center px-4 overflow-hidden">
-      {/* Background Image */}
-      <Image
+       <Image
         src={bannerImage}
         alt="Background"
         fill
@@ -56,11 +55,9 @@ export default function CategoryLastHero({
         className="z-11"
       />
 
-      {/* White semi-transparent overlay */}
-      <div className="absolute inset-0 bg-white bg-opacity-30 z-10" />
+       <div className="absolute inset-0 bg-white bg-opacity-30 z-10" />
 
-      {/* Gradient overlay on top of white overlay */}
-      <div className="absolute inset-0 z-20 pointer-events-none" />
+       <div className="absolute inset-0 z-20 pointer-events-none" />
 
       <div className="z-30 text-right gap-6 flex flex-col items-center w-full max-w-full  mx-auto px-30 mt-30  lg:block">
         <Button className="cursor-pointer gap-6 active:scale-95 bg-white/50  e text-[#fff] hover:bg-[#fff] hover:text-[#000] py-3 h-13 rounded-xl font-semibold transition duration-200">

@@ -27,9 +27,9 @@ export default function OfferBanner() {
                {images.map((src, idx) => (
             <div
               key={idx}
-              className="bg-white py-0 rounded-2xl mx-4 shadow-md  min-w-[750px]  flex items-center justify-center"
+              className="bg-white py-0 rounded-2xl mx-4 h-18 sm:h-28 lg:h-40 shadow-md min-w-[350px] sm:min-w-[560px] lg:min-w-[790px]  flex items-center justify-center"
             >
-              <img src={src} alt={`item-${idx}`} className="h-40 object-contain" />
+              <img src={src} alt={`item-${idx}`} className="rounded-xl object-contain" />
             </div>
           ))}
         </div>

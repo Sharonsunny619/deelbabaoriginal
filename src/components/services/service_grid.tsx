@@ -4,38 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { professionals } from "./data";
 import { useRouter } from "next/navigation";
+import { BannerSection } from "../common/threegrid_banner_card";
 
-const BannerCard = ({ item }) => {
-  return (
-    <div className="relative bg-white rounded-none shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] h-48 sm:h-56 md:h-64 lg:h-[270px] overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src={item.image}
-        alt={item.name}
-        fill={true}
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-black/10"></div>
-      <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 z-10">
-        <button className="mt-3 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-2xl text-xs sm:text-sm px-3 py-1 sm:px-4 sm:py-1.5 hover:opacity-70 w-fit">
-          Buy Now
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const BannerSection = ({ items }) => {
-  return (
-    <div className="col-span-full bg-white p-0 rounded-2xl">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-        {items.map((item) => (
-          <BannerCard key={item.id} item={item} />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 export default function ServiceGrid() {
   const gridItems = [];
