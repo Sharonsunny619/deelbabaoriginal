@@ -9,7 +9,12 @@ const BannerCard = ({ item }) => {
   return (
     <div className="relative bg-white rounded-none shadow-[0px_0px_8px_2px_rgba(0,0,0,0.1)] h-48 sm:h-56 md:h-64 lg:h-[270px] overflow-hidden">
       {/* Background Image */}
-      <Image src={item.image} alt={item.name} fill={true} className="object-cover" />
+      <Image
+        src={item.image}
+        alt={item.name}
+        fill={true}
+        className="object-cover"
+      />
       <div className="absolute inset-0 bg-black/10"></div>
       <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 z-10">
         <button className="mt-3 bg-[#000] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-2xl text-xs sm:text-sm px-3 py-1 sm:px-4 sm:py-1.5 hover:opacity-70 w-fit">
@@ -50,7 +55,7 @@ export default function ServiceGrid() {
         <div
           key={item.id}
           onClick={handleCardClick}
-          className="bg-white hover:scale-105 transition-transform duration-300 rounded-3xl shadow-xl h-72 sm:h-80 md:h-[300px] p-4 sm:p-6 flex flex-col items-center"
+          className="bg-white hover:scale-105 transition-transform duration-300 rounded-3xl shadow-xl h-72 sm:h-80 md:h-[300px] p-4 sm:p-6 flex flex-col items-center   "
         >
           <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 relative overflow-hidden rounded-full mb-3 sm:mb-4">
             <Image
@@ -60,7 +65,9 @@ export default function ServiceGrid() {
               className="object-cover"
             />
           </div>
-          <p className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-black text-center">{item.name}</p>
+          <p className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-black text-center">
+            {item.name}
+          </p>
           <div className="flex gap-2 sm:gap-3 md:gap-4 mt-auto">
             <button
               onClick={handleInteractiveClick}
@@ -92,8 +99,8 @@ export default function ServiceGrid() {
   }
 
   return (
-    <div className="py-6 px-12 sm:px-12 md:px-18 lg:px-22 xl:px-45">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 sm:gap-8 md:gap-10">
+    <div className="py-6 px-12  min-[450px]:px-12 min-[770px]:px-18 min-[1100px]:px-22 min-[1600px]:px-60">
+      <div className="grid grid-cols-1 min-[450px]:grid-cols-2 min-[770px]:grid-cols-3 min-[1100px]:grid-cols-4 min-[1600px]:grid-cols-5 gap-6 min-[450px]:gap-8 min-[770px]:gap-10 min-[1700px]:gap-15">
         {gridItems}
       </div>
     </div>

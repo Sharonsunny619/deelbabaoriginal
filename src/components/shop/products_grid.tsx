@@ -21,10 +21,7 @@ const BannerCard = ({ item }) => {
        <div className="absolute inset-0 bg-black/30 rounded-[22px]"></div>
 
       <div className="flex flex-col gap-2 z-10">
-        <span className="text-2xl font-semibold text-white">{item.name}</span>
-        <span className="text-3xl font-bold text-yellow-300">
-          {item.discount}% Off
-        </span>
+         
         <button className="bg-[#689567] cursor-pointer transition duration-300 active:scale-95 font-semibold text-white rounded-[15px] px-6 py-1 hover:opacity-70 w-fit">
           Buy Now
         </button>

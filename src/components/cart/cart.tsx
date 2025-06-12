@@ -82,21 +82,24 @@ const Cart: React.FC = () => {
                     key={item.id}
                     className="grid grid-cols-1 sm:grid-cols-3 p-3 sm:p-4 rounded-2xl sm:rounded-3xl bg-white border-[1px] gap-4"
                   >
-                    <div className="w-full h-[200px] sm:h-[250px]">
+                    <div className="w-full h-[300px] sm:h-[300px]">
                       <Image
                         src={item.image}
                         alt={item.name}
                         width={200}
-                        height={200}
+                        height={300}
                         className="object-cover rounded-md w-full h-full"
                       />
                     </div>
                     <div className="flex-1 p-0 sm:p-4 sm:col-span-2 sm:border-l-[1px]">
                       <div className="flex flex-col sm:flex-row justify-between items-start">
                         <div className="w-full">
-                          <h2 className="text-base sm:text-lg font-semibold">{item.name}</h2>
+                          <h2 className="text-base sm:text-lg font-semibold">
+                            {item.name}
+                          </h2>
                           <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                            Lorem Ipsum Color Support, Consecutive Adipiscing Elit
+                            Lorem Ipsum Color Support, Consecutive Adipiscing
+                            Elit
                           </p>
                           <div className="flex items-center gap-2 mt-2">
                             <p className="text-sm sm:text-lg line-through text-red-600 font-bold">
@@ -122,7 +125,9 @@ const Cart: React.FC = () => {
                         </p>
                         <Select
                           value={item.quantity.toString()}
-                          onValueChange={(value) => handleQuantityChange(item.id, value)}
+                          onValueChange={(value) =>
+                            handleQuantityChange(item.id, value)
+                          }
                         >
                           <SelectTrigger className="w-20 cursor-pointer text-sm">
                             <SelectValue placeholder="Qty" />
@@ -150,7 +155,9 @@ const Cart: React.FC = () => {
 
               <div className="w-full max-w-md lg:max-w-none lg:w-80">
                 <Card className="p-4 bg-transparent border-none shadow-none">
-                  <h2 className="text-lg sm:text-xl font-bold mb-4">ORDER DETAILS</h2>
+                  <h2 className="text-lg sm:text-xl font-bold mb-4">
+                    ORDER DETAILS
+                  </h2>
                   <div className="space-y-2 text-sm sm:text-base">
                     <div className="flex justify-between">
                       <span>Items</span>
@@ -163,7 +170,9 @@ const Cart: React.FC = () => {
                     <div className="flex justify-between">
                       <span>Delivery</span>
                       <span className={delivery === 0 ? "text-green-600" : ""}>
-                        {delivery === 0 ? "FREE" : `₹${delivery.toLocaleString()}`}
+                        {delivery === 0
+                          ? "FREE"
+                          : `₹${delivery.toLocaleString()}`}
                       </span>
                     </div>
                     <div className="flex justify-between font-bold text-base sm:text-lg border-t pt-2 mt-2">
@@ -184,11 +193,11 @@ const Cart: React.FC = () => {
                 </Card>
               </div>
             </div>
-            <div className="w-full mt-8">
-              <FeaturedProducts />
-            </div>
           </div>
         )}
+      </div>
+      <div className="w-full mt-8">
+        <FeaturedProducts />
       </div>
       <PromoCarousel />
     </>

@@ -30,7 +30,7 @@ export default function Payment() {
           colorB={isHovered ? "#689567" : "#A6E8A4"}
         />
       </div>
-         <div className="flex flex-col sm:flex-row items-center justify-center mb-8 gap-4 sm:gap-6">
+         <div className="flex  flex-row items-center justify-center mb-8 gap-4 sm:gap-6">
          <div className="flex items-center">
           <div className="flex flex-col items-center">
             <div className="w-8 h-8 flex items-center justify-center">
@@ -53,7 +53,7 @@ export default function Payment() {
             </span>
           </div>
           <div
-            className={`hidden sm:block border-b border-dashed w-20 mx-3 ${
+            className={`  border-b border-dashed w-5 sm:w-20 mx-1 sm:mx-3 ${
               step === "ADDRESS" || step === "PAYMENT"
                 ? "border-[#689567]"
                 : "border-gray-300"
@@ -83,7 +83,7 @@ export default function Payment() {
             </span>
           </div>
           <div
-            className={`hidden sm:block border-b border-dashed w-20 mx-3 ${
+            className={`   border-b border-dashed w-5 sm:w-20 mx-1 sm:mx-3 ${
               step === "PAYMENT" ? "border-[#689567]" : "border-gray-300"
             }`}
           />

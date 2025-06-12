@@ -11,8 +11,7 @@ import { Product } from "./interface";
 import { CategoryType } from "../shop/category/interface";
 
 const ProductCard = ({ product, shopcategory }:{product:Product,shopcategory?:CategoryType }) => {
-  console.log("shopcategory: ", shopcategory);
-  const [isFavorite, setIsFavorite] = useState(false);
+   const [isFavorite, setIsFavorite] = useState(false);
   const { name, image, price, originalPrice, discount, rating } = product;
   const router = useRouter();
   const dispatch = useDispatch();
